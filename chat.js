@@ -150,13 +150,17 @@
     }
 
     /* Markdown styles inside messages */
-    .chat-msg p { margin: 0 0 8px 0; }
+    .chat-msg p { margin: 0 0 10px 0; line-height: 1.5; }
     .chat-msg p:last-child { margin-bottom: 0; }
+    .chat-msg h1 { font-size: 18px; font-weight: 700; margin: 16px 0 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px; }
+    .chat-msg h2 { font-size: 15px; font-weight: 700; margin: 16px 0 8px 0; }
+    .chat-msg h3 { font-size: 14px; font-weight: 700; margin: 12px 0 6px 0; }
+    .chat-msg h1:first-child, .chat-msg h2:first-child, .chat-msg h3:first-child { margin-top: 0; }
     .chat-msg strong { font-weight: 700; color: inherit; }
     .chat-msg em { font-style: italic; }
-    .chat-msg ul { margin: 4px 0 8px 16px; padding: 0; list-style-type: disc; }
-    .chat-msg ol { margin: 4px 0 8px 16px; padding: 0; list-style-type: decimal; }
-    .chat-msg li { margin-bottom: 4px; }
+    .chat-msg ul, .chat-msg ol { margin: 8px 0 10px 20px; padding: 0; list-style-position: outside; }
+    .chat-msg li { margin-bottom: 4px; line-height: 1.5; }
+    .chat-msg li:last-child { margin-bottom: 0; }
     .chat-msg code { background: rgba(0,0,0,0.2); padding: 2px 4px; border-radius: 4px; font-family: monospace; font-size: 11px; }
 
     /* Thinking indicator */
@@ -396,6 +400,10 @@
     if (!text) return '';
     let html = text
       .trim()
+      // Headers
+      .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
+      .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
+      .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
       // Bold
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       // Italic
@@ -403,20 +411,20 @@
       // Inline code
       .replace(/`(.*?)`/g, '<code>$1</code>')
       // Lists (simple conversion mapping "\n- " to list items)
-      .replace(/\n\s*-\s+(.*)/g, '\n<ul><li>$1</li></ul>')
+      .replace(/^\s*[-*]\s+(.*)$/gm, '<ul><li>$1</li></ul>')
       // Merge consecutive UL lists
-      .replace(/<\/ul>\n<ul>/g, '\n')
-      // Paragraphs and line breaks
-      .replace(/\n\n/g, '</p><p>')
-      .replace(/\n([^<])/g, '<br>$1');
+      .replace(/<\/ul>\s*<ul>/g, '\n');
 
-    // Wrap in paragraph if it doesn't start with one
-    if (!html.startsWith('<p>') && !html.startsWith('<ul>')) {
-      html = '<p>' + html + '</p>';
-    }
-
-    // Fix unclosed paragraphs next to lists (rudimentary cleanup)
-    html = html.replace(/<p><ul>/g, '<ul>').replace(/<\/ul><\/p>/g, '</ul>');
+    // Paragraphs and line breaks
+    html = html.split(/\n\n+/).map(block => {
+      // If block starts with a block-level tag, do not wrap in <p>
+      if (/^(<h[1-6]>|<ul>|<ol>)/i.test(block.trim())) {
+        return block.trim();
+      } else {
+        // Replace single newlines with <br> inside paragraphs
+        return '<p>' + block.trim().replace(/\n/g, '<br>') + '</p>';
+      }
+    }).join('\n\n');
 
     return html;
   }

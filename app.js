@@ -390,8 +390,9 @@ function renderRouteMap() {
 
 // ─── Highlight Section Builders ────────────────────────────────────
 function buildHighlightCard(item, delayIndex) {
+  const searchQuery = encodeURIComponent(item.name + ' ' + (item.city !== 'All Cities' ? item.city : 'Italy') + ' travel');
   return `
-    <div class="card-hover glass-card rounded-2xl shadow-md overflow-hidden slide-up group" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px)">
+    <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="card-hover glass-card rounded-2xl shadow-md overflow-hidden slide-up group block" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px)">
       <div class="relative h-48 overflow-hidden">
         <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -405,7 +406,7 @@ function buildHighlightCard(item, delayIndex) {
       <div class="p-4">
         <p class="text-sm text-slate-300 leading-relaxed">${item.description}</p>
       </div>
-    </div>
+    </a>
   `;
 }
 
