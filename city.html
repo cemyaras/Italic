@@ -36,13 +36,21 @@
 
         body {
             background: #050c1a;
-            background-image: radial-gradient(circle at 15% 50%, rgba(0, 255, 255, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.02) 0%, transparent 50%);
-            background-attachment: fixed;
             min-height: 100vh;
             overscroll-behavior: none;
             color: #e2e8f0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: radial-gradient(circle at 15% 50%, rgba(0, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.02) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .fade-in {
@@ -106,12 +114,15 @@
 
         .info-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 1.5rem;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+            will-change: transform, box-shadow;
+            transform: translateZ(0);
+            /* Hardware acceleration */
         }
 
         .info-card:hover {
@@ -165,8 +176,7 @@
         <div class="relative z-20 h-full flex flex-col justify-end max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
             <div class="fade-in">
                 <p class="text-amber-400/90 text-sm font-bold tracking-widest uppercase mb-2" id="city-dates"></p>
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight drop-shadow-lg"
-                    id="city-name">
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight" id="city-name">
                     Loading...</h1>
             </div>
         </div>
@@ -182,10 +192,10 @@
             <div class="info-card overflow-hidden fade-in" id="transport-arrival-card">
                 <div class="bg-gradient-to-r from-[#1e3a8a] to-[#2563eb] px-6 py-4 border-b border-white/10">
                     <div class="flex items-center gap-4">
-                        <span class="text-3xl drop-shadow-md" id="arrival-icon">✈️</span>
+                        <span class="text-3xl" id="arrival-icon">✈️</span>
                         <div>
                             <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">Arrival</p>
-                            <p class="text-white font-bold text-lg drop-shadow-sm" id="arrival-type">Flight</p>
+                            <p class="text-white font-bold text-lg" id="arrival-type">Flight</p>
                         </div>
                     </div>
                 </div>
@@ -198,11 +208,11 @@
             <div class="info-card overflow-hidden fade-in" style="animation-delay: 0.1s" id="transport-departure-card">
                 <div class="bg-gradient-to-r from-[#9a3412] to-[#f59e0b] px-6 py-4 border-b border-white/10">
                     <div class="flex items-center gap-4">
-                        <span class="text-3xl drop-shadow-md" id="departure-icon">🚄</span>
+                        <span class="text-3xl" id="departure-icon">🚄</span>
                         <div>
                             <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">Departure
                             </p>
-                            <p class="text-white font-bold text-lg drop-shadow-sm" id="departure-type">Train</p>
+                            <p class="text-white font-bold text-lg" id="departure-type">Train</p>
                         </div>
                     </div>
                 </div>
@@ -216,11 +226,11 @@
                 id="accommodation-card">
                 <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 px-6 py-4 border-b border-white/10">
                     <div class="flex items-center gap-4">
-                        <span class="text-3xl drop-shadow-md">🏨</span>
+                        <span class="text-3xl">🏨</span>
                         <div>
                             <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">
                                 Accommodation</p>
-                            <p class="text-white font-bold text-lg drop-shadow-sm" id="hotel-name">Hotel</p>
+                            <p class="text-white font-bold text-lg" id="hotel-name">Hotel</p>
                         </div>
                     </div>
                 </div>

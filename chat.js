@@ -323,6 +323,12 @@
 
   // ── Build DOM ──
   function buildChat() {
+    // Prevent duplicate DOM injections
+    const existingToggle = document.getElementById('chat-toggle');
+    if (existingToggle) existingToggle.remove();
+    const existingPanel = document.getElementById('chat-panel');
+    if (existingPanel) existingPanel.remove();
+
     // Toggle button
     const toggle = document.createElement('button');
     toggle.id = 'chat-toggle';
@@ -608,4 +614,13 @@
   } else {
     buildChat();
   }
+
+  // Memory cleanup
+  window.addEventListener('beforeunload', () => {
+    isStreaming = false; // abort any internal flag
+    const panel = document.getElementById('chat-panel');
+    const toggle = document.getElementById('chat-toggle');
+    if (panel) panel.remove();
+    if (toggle) toggle.remove();
+  });
 })();

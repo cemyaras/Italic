@@ -36,6 +36,8 @@ function setFooterYear() {
 }
 
 // ─── Countdown Timer ───────────────────────────────────────────
+window.countdownInterval = null;
+
 function startCountdown(targetDateStr) {
   const targetDate = new Date(targetDateStr).getTime();
   const daysEl = document.getElementById('countdown-days');
@@ -45,6 +47,8 @@ function startCountdown(targetDateStr) {
   const labelEl = document.getElementById('countdown-label');
 
   if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+  if (window.countdownInterval) clearInterval(window.countdownInterval);
 
   function update() {
     const now = Date.now();
@@ -56,6 +60,10 @@ function startCountdown(targetDateStr) {
       minutesEl.textContent = '00';
       secondsEl.textContent = '00';
       if (labelEl) labelEl.textContent = '🎉 The Journey Has Begun!';
+      if (window.countdownInterval) {
+        clearInterval(window.countdownInterval);
+        window.countdownInterval = null;
+      }
       return;
     }
 
@@ -71,7 +79,7 @@ function startCountdown(targetDateStr) {
   }
 
   update();
-  setInterval(update, 1000);
+  window.countdownInterval = setInterval(update, 1000);
 }
 
 // ─── Copy to Clipboard ────────────────────────────────────────
@@ -112,7 +120,7 @@ function buildFlightCard(direction, colorFrom, colorTo, badgeColor) {
     : null;
 
   return `
-    <div class="glass-card rounded-3xl shadow-lg overflow-hidden fade-in" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+    <div class="glass-card rounded-3xl shadow-lg overflow-hidden fade-in" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
       <div class="bg-gradient-to-r ${colorFrom} ${colorTo} px-6 py-4 border-b border-white/10">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
@@ -190,7 +198,7 @@ function renderFlights(flights) {
 // ─── Train Card Builder ────────────────────────────────────────
 function buildTrainCard(train) {
   return `
-    <div class="glass-card rounded-3xl shadow-lg overflow-hidden fade-in" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+    <div class="glass-card rounded-3xl shadow-lg overflow-hidden fade-in" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
       <div class="bg-gradient-to-r from-purple-800 to-fuchsia-600 px-6 py-4 border-b border-white/10">
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-4">
@@ -263,6 +271,7 @@ function renderRouteMap() {
     attributionControl: false,
     scrollWheelZoom: false,
   });
+  window.routeMapInstance = map;
 
   // Dark tile layer
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -334,36 +343,29 @@ function renderRouteMap() {
 
   Object.keys(cities).forEach(key => {
     const c = cities[key];
-    const icon = L.divIcon({
-      className: 'custom-marker',
-      html: `<div style="
-        background: ${markerColors[key]};
-        width: 32px; height: 32px;
-        border-radius: 50%;
-        border: 2px solid rgba(255,255,255,0.3);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 14px;
-        box-shadow: 0 0 12px ${markerColors[key]}80;
-      ">${c.emoji}</div>`,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16],
-      popupAnchor: [0, -18],
+
+    // Use lightweight circle markers instead of heavy DOM divIcons
+    const marker = L.circleMarker([c.lat, c.lng], {
+      color: '#ffffff',
+      weight: 2,
+      fillColor: markerColors[key],
+      fillOpacity: 1,
+      radius: 8,
+      className: 'vector-marker'
+    }).addTo(map);
+
+    marker.bindPopup(`
+      <div style="font-family:Inter,sans-serif; min-width:160px;">
+        <strong style="font-size:14px;">${c.emoji} ${c.label}</strong>
+        <span style="color:#999; font-size:11px; margin-left:4px;">${c.sub}</span>
+        <hr style="border-color:#333; margin:6px 0;">
+        <div style="font-size:11px; color:#ccc; line-height:1.6;">${markerInfo[key]}</div>
+      </div>
+    `, {
+      className: 'dark-popup',
     });
 
-    L.marker([c.lat, c.lng], { icon })
-      .addTo(map)
-      .bindPopup(`
-        <div style="font-family:Inter,sans-serif; min-width:160px;">
-          <strong style="font-size:14px;">${c.label}</strong>
-          <span style="color:#999; font-size:11px; margin-left:4px;">${c.sub}</span>
-          <hr style="border-color:#333; margin:6px 0;">
-          <div style="font-size:11px; color:#ccc; line-height:1.6;">${markerInfo[key]}</div>
-        </div>
-      `, {
-        className: 'dark-popup',
-      });
-
-    // City label on map
+    // City label on map (Text only, simpler divIcon)
     L.marker([c.lat, c.lng], {
       icon: L.divIcon({
         className: 'city-label',
@@ -376,10 +378,11 @@ function renderRouteMap() {
           white-space: nowrap;
           text-align: center;
           pointer-events: none;
-        ">${c.label}<br><span style="font-size:9px; color:#94a3b8; font-weight:400;">${c.sub}</span></div>`,
-        iconSize: [80, 30],
+        ">${c.label}</div>`,
+        iconSize: [80, 20],
         iconAnchor: [40, -12],
       }),
+      interactive: false
     }).addTo(map);
   });
 
@@ -392,9 +395,9 @@ function renderRouteMap() {
 function buildHighlightCard(item, delayIndex) {
   const searchQuery = encodeURIComponent(item.name + ' ' + (item.city !== 'All Cities' ? item.city : 'Italy') + ' travel');
   return `
-    <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="flex-none w-[280px] sm:w-[320px] snap-start card-hover glass-card rounded-3xl shadow-xl overflow-hidden slide-up group block" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+    <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="flex-none w-[280px] sm:w-[320px] snap-start card-hover glass-card rounded-3xl overflow-hidden slide-up group block" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px); transform: translateZ(0);">
       <div class="relative h-56 overflow-hidden">
-        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-[#050c1a]/20 to-transparent"></div>
         <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 shadow-lg">
           <span class="text-xs font-bold text-white tracking-widest uppercase">${item.city}</span>
@@ -412,7 +415,7 @@ function buildHighlightCard(item, delayIndex) {
 
 function buildRecommendationCard(item, delayIndex) {
   return `
-    <div class="glass-card flex gap-4 p-5 rounded-2xl shadow-lg slide-up" style="animation-delay: ${delayIndex * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+    <div class="glass-card flex gap-4 p-5 rounded-2xl shadow-lg slide-up" style="animation-delay: ${delayIndex * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
       <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10 text-2xl shadow-inner">
         ${item.icon}
       </div>
@@ -439,9 +442,9 @@ function buildHomeAccommodationCard(city, delayIndex) {
   }
 
   return `
-    <div class="card-hover glass-card rounded-3xl shadow-xl overflow-hidden slide-up flex flex-col justify-between group" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+    <div class="card-hover glass-card rounded-3xl overflow-hidden slide-up flex flex-col justify-between group" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px); transform: translateZ(0);">
       <div class="relative h-56 overflow-hidden">
-        ${acc.image ? `<img src="${acc.image}" alt="${acc.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">` : `<div class="w-full h-full bg-slate-800"></div>`}
+        ${acc.image ? `<img src="${acc.image}" alt="${acc.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">` : `<div class="w-full h-full bg-slate-800"></div>`}
         <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-transparent to-transparent"></div>
         <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 shadow-lg">
           <span class="text-xs font-bold text-white tracking-widest uppercase">${city.name}</span>
@@ -539,9 +542,9 @@ function renderHomePage(data) {
   if (!grid) return;
 
   grid.innerHTML = cities.map((city, index) => `
-    <a href="city.html?id=${city.id}" class="card-hover block rounded-3xl shadow-xl overflow-hidden slide-up group" style="animation-delay: ${index * 0.12}s; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(16px)">
+    <a href="city.html?id=${city.id}" class="card-hover block rounded-3xl overflow-hidden slide-up group" style="animation-delay: ${index * 0.12}s; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(10px); transform: translateZ(0);">
       <div class="relative h-60 overflow-hidden">
-        <img src="${city.coverImage}" alt="${city.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
+        <img src="${city.coverImage}" alt="${city.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
         <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-[#050c1a]/40 to-transparent"></div>
         <div class="absolute bottom-5 left-6">
           <h3 class="text-white text-3xl font-extrabold drop-shadow-md">${city.name}</h3>
@@ -645,9 +648,9 @@ function buildMustSeeSection(mustSeeItems) {
   if (!mustSeeItems || mustSeeItems.length === 0) return '';
 
   return mustSeeItems.map((item, index) => `
-    <div class="flex-none w-[280px] sm:w-[320px] snap-start card-hover glass-card rounded-3xl shadow-xl overflow-hidden slide-up group" style="animation-delay: ${index * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+    <div class="flex-none w-[280px] sm:w-[320px] snap-start card-hover glass-card rounded-3xl overflow-hidden slide-up group" style="animation-delay: ${index * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px); transform: translateZ(0);">
       <div class="relative h-56 overflow-hidden">
-        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-[#050c1a]/20 to-transparent"></div>
         <div class="absolute bottom-4 left-5 right-5">
           <h3 class="text-white font-extrabold text-xl leading-tight shadow-sm drop-shadow-md">${item.name}</h3>
@@ -796,4 +799,19 @@ async function init() {
 }
 
 // Start the app
-document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// Memory cleanup on navigation
+window.addEventListener('beforeunload', () => {
+  if (window.countdownInterval) {
+    clearInterval(window.countdownInterval);
+  }
+  if (window.routeMapInstance) {
+    window.routeMapInstance.remove();
+    window.routeMapInstance = null;
+  }
+});

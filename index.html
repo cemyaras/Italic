@@ -40,13 +40,21 @@
 
     body {
       background: #050c1a;
-      background-image: radial-gradient(circle at 15% 50%, rgba(0, 255, 255, 0.02) 0%, transparent 50%),
-        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.02) 0%, transparent 50%);
-      background-attachment: fixed;
       min-height: 100vh;
       overscroll-behavior: none;
       color: #e2e8f0;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(circle at 15% 50%, rgba(0, 255, 255, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.02) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .hero-gradient {
@@ -55,21 +63,26 @@
 
     .countdown-box {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
       border-radius: 1rem;
+      transform: translateZ(0);
+      /* Hardware acceleration */
     }
 
     .glass-card {
       background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 1.25rem;
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform, box-shadow;
+      transform: translateZ(0);
+      /* Hardware acceleration */
     }
 
     .glass-card:hover {
@@ -159,8 +172,12 @@
   <section class="hero-gradient relative overflow-hidden flex flex-col justify-center min-h-[500px]">
     <!-- Decorative elements -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-24 -left-24 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px]"></div>
-      <div class="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px]"></div>
+      <div
+        class="absolute -top-24 -left-24 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl transform translate-z-0">
+      </div>
+      <div
+        class="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl transform translate-z-0">
+      </div>
     </div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center text-white">
