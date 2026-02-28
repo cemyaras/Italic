@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Italy Trip – Travel Plan</title>
+  <meta name="description"
+    content="Italy travel plan: Sofia, Rome, Florence & Venice. Day-by-day itinerary, accommodation & transport details." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+
+    html {
+      background: #0A1128;
+      overscroll-behavior: none;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0F1B3A 0%, #0C1530 40%, #0A1128 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      overscroll-behavior: none;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #0B3B70 0%, #1A2645 40%, #4A2511 100%);
+    }
+
+    .card-hover {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Leaflet dark popup */
+    .dark-popup .leaflet-popup-content-wrapper {
+      background: #131F3D;
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .dark-popup .leaflet-popup-tip {
+      background: #131F3D;
+    }
+
+    .custom-marker,
+    .city-label {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .slide-up {
+      animation: slideUp 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased text-slate-300">
+
+  <!-- Hero Section -->
+  <section class="hero-gradient relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-700/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 text-center text-white">
+      <!-- Title -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 fade-in text-white"
+        style="animation-delay: 0.1s" id="hero-title">
+        Loading...
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto mb-6 fade-in"
+        style="animation-delay: 0.2s" id="hero-subtitle"></p>
+
+      <!-- Dates -->
+      <div class="inline-flex items-center gap-3 text-amber-300/80 text-base sm:text-lg mb-12 fade-in"
+        style="animation-delay: 0.3s">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span id="hero-dates"></span>
+      </div>
+
+      <!-- Countdown -->
+      <div class="fade-in" style="animation-delay: 0.4s">
+        <p class="text-sm font-semibold tracking-widest uppercase text-slate-400 mb-4" id="countdown-label">✈️ Time
+          Until
+          Departure</p>
+        <div class="flex justify-center gap-3 sm:gap-4" id="countdown-container">
+          <div class="countdown-box rounded-2xl px-4 sm:px-6 py-4 min-w-[80px]">
+            <div class="text-3xl sm:text-4xl font-bold tabular-nums text-white" id="countdown-days">--</div>
+            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Days</div>
+          </div>
+          <div class="countdown-box rounded-2xl px-4 sm:px-6 py-4 min-w-[80px]">
+            <div class="text-3xl sm:text-4xl font-bold tabular-nums text-white" id="countdown-hours">--</div>
+            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Hours</div>
+          </div>
+          <div class="countdown-box rounded-2xl px-4 sm:px-6 py-4 min-w-[80px]">
+            <div class="text-3xl sm:text-4xl font-bold tabular-nums text-white" id="countdown-minutes">--</div>
+            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Minutes</div>
+          </div>
+          <div class="countdown-box rounded-2xl px-4 sm:px-6 py-4 min-w-[80px]">
+            <div class="text-3xl sm:text-4xl font-bold tabular-nums text-white" id="countdown-seconds">--</div>
+            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Seconds</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Departure Info -->
+      <div class="mt-8 fade-in" style="animation-delay: 0.5s">
+        <p class="text-sm text-slate-400/70" id="departure-info"></p>
+      </div>
+    </div>
+
+    <!-- Wave bottom (multi-layer for smooth 3-color transition) -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <!-- Layer 1: Intermediate navy -->
+      <svg viewBox="0 0 1440 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block"
+        preserveAspectRatio="none" style="height: 120px;">
+        <path
+          d="M0 200L40 180C80 160 160 120 240 100C320 80 400 80 480 90C560 100 640 120 720 130C800 140 880 140 960 130C1040 120 1120 100 1200 90C1280 80 1360 80 1400 85L1440 90V200H0Z"
+          fill="#0F1B3A" />
+        <path
+          d="M0 200L48 190C96 180 192 160 288 148C384 136 480 132 576 138C672 144 768 158 864 162C960 166 1056 158 1152 150C1248 142 1344 134 1392 130L1440 126V200H0Z"
+          fill="#0C1530" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Second wave: transition from mid-navy to deepest navy -->
+  <div class="relative -mt-1" style="z-index: 0;">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block"
+      preserveAspectRatio="none" style="height: 60px;">
+      <path d="M0 0H1440V80H0Z" fill="#0C1530" />
+      <path d="M0 30C240 10 480 20 720 15C960 10 1200 20 1440 10V80H0Z" fill="#0A1128" />
+    </svg>
+  </div>
+
+  <!-- Flights Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-4">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">✈️ Flight Information</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">Your complete flight itinerary with layover details</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6" id="flights-container">
+      <!-- Rendered by app.js -->
+    </div>
+
+    <!-- Train Information -->
+    <div class="mt-8 mb-4">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">🚄 Train Information</h2>
+        <p class="text-slate-400 max-w-xl mx-auto">Inter-city train connections between Italian cities</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6" id="trains-container">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+
+    <!-- Route Map -->
+    <div class="mt-8 glass-card rounded-2xl p-4 sm:p-6 overflow-hidden" id="route-map-card">
+      <h3 class="text-lg font-bold text-white mb-4 text-center">🗺️ Route Map</h3>
+      <div id="route-map" style="height: 420px; border-radius: 12px; z-index: 1;"></div>
+      <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-0 inline-block" style="border-top: 2.5px dashed #60a5fa"></span>
+          <span class="text-xs text-slate-400">Outbound Flight (May 22)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-0 inline-block" style="border-top: 2.5px dashed #f59e0b"></span>
+          <span class="text-xs text-slate-400">Return Flight (May 31)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-0 inline-block" style="border-top: 2.5px solid #a78bfa"></span>
+          <span class="text-xs text-slate-400">Train Routes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cities Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 border-t border-white/5">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Cities to Visit</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">Click on each city to view the detailed itinerary, accommodation &
+        transport info.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6" id="cities-grid">
+      <!-- City cards will be rendered here by app.js -->
+    </div>
+  </section>
+
+  <!-- Accommodation Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">🏨 Where We Stay</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">Accommodation details for each city with dates and directions</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accommodation-grid">
+      <!-- Rendered by app.js -->
+    </div>
+  </section>
+
+  <!-- Recommendations Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">💡 Travel Recommendations</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">Practical tips to make the most of your trip</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8" id="recommendations-grid">
+      <!-- Rendered by app.js -->
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">🛶 Activities & Tours</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">Unforgettable experiences and guided tours</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="activities-grid">
+      <!-- Rendered by app.js -->
+    </div>
+  </section>
+
+  <!-- Food Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">🍝 Culinary Delights</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">Local food you must try during your adventure</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="food-grid">
+      <!-- Rendered by app.js -->
+    </div>
+  </section>
+
+  <!-- Highlights Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">📍 Iconic Landmarks</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">World-famous historical sites and magnificent architecture</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="highlights-grid">
+      <!-- Rendered by app.js -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+      <p class="text-sm text-slate-500">
+        ✨ Bon Voyage! • <span id="footer-year"></span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="chat.js"></script>
+</body>
+
+</html>

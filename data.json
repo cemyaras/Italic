@@ -1,0 +1,914 @@
+{
+  "trip": {
+    "title": "İtalya Seyahati 🇮🇹",
+    "subtitle": "Sofia · Rome · Florence · Venice",
+    "startDate": "2026-05-22",
+    "endDate": "2026-05-31",
+    "departure": {
+      "date": "2026-05-22T11:00:00",
+      "from": "İstanbul Sabiha Gökçen (SAW)",
+      "to": "Roma (FCO)",
+      "airline": "via Sofia",
+      "flightNo": "",
+      "pnr": "1RN11M"
+    },
+    "highlights": [
+      {
+        "name": "The Colosseum",
+        "city": "Rome",
+        "description": "Witness the grandeur of the ancient world's largest amphitheater.",
+        "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80"
+      },
+      {
+        "name": "Florence Cathedral",
+        "city": "Florence",
+        "description": "Marvel at Brunelleschi's architectural masterpiece soaring above the Renaissance city.",
+        "image": "https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?w=600&q=80"
+      },
+      {
+        "name": "Grand Canal",
+        "city": "Venice",
+        "description": "Drift along the main aquatic thoroughfare lined with stunning palaces.",
+        "image": "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=600&q=80"
+      },
+      {
+        "name": "Uffizi Gallery",
+        "city": "Florence",
+        "description": "Immerse yourself in the world's finest collection of Renaissance art.",
+        "image": "https://images.unsplash.com/photo-1534008897995-27a23e859048?w=600&q=80"
+      }
+    ],
+    "food": [
+      {
+        "name": "Authentic Carbonara",
+        "city": "Rome",
+        "description": "Taste the real Roman pasta made with guanciale, pecorino, egg, and black pepper.",
+        "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&q=80"
+      },
+      {
+        "name": "Bistecca alla Fiorentina",
+        "city": "Florence",
+        "description": "Savor the legendary thick-cut Florentine T-bone steak, grilled to perfection.",
+        "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80"
+      },
+      {
+        "name": "Cicchetti",
+        "city": "Venice",
+        "description": "Enjoy Venetian tapas at local bacari, paired with a refreshing spritz.",
+        "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&q=80"
+      },
+      {
+        "name": "Gelato Artigianale",
+        "city": "All Cities",
+        "description": "Indulge in authentic Italian artisanal gelato as you explore the streets.",
+        "image": "https://images.unsplash.com/photo-1563805042-7684c8e9e533?w=600&q=80"
+      },
+      {
+        "name": "Neapolitan Pizza",
+        "city": "Rome/Naples",
+        "description": "The classic wood-fired Margherita pizza with fresh mozzarella, tomatoes and basil.",
+        "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80"
+      },
+      {
+        "name": "Tiramisu",
+        "city": "Venice",
+        "description": "Italy's most famous dessert made with coffee-soaked ladyfingers and sweet mascarpone.",
+        "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&q=80"
+      }
+    ],
+    "activities": [
+      {
+        "name": "Gondola Ride at Sunset",
+        "city": "Venice",
+        "description": "Experience the romance of Venice from the water in a traditional gondola.",
+        "image": "https://images.unsplash.com/photo-1528114039593-4366cc08227d?w=600&q=80"
+      },
+      {
+        "name": "Vatican Museum Tour",
+        "city": "Rome",
+        "description": "Explore centuries of art culminating in Michelangelo's Sistine Chapel.",
+        "image": "https://images.unsplash.com/photo-1531572753322-ad063cecc140?w=600&q=80"
+      },
+      {
+        "name": "Chianti Wine Tasting",
+        "city": "Tuscany/Florence",
+        "description": "Sample robust red wines in the picturesque Tuscan countryside.",
+        "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&q=80"
+      },
+      {
+        "name": "Pasta Making Class",
+        "city": "Rome/Florence",
+        "description": "Learn the secrets of making perfect fresh Italian pasta from a local chef.",
+        "image": "https://images.unsplash.com/photo-1556761223-4c4282c73f77?w=600&q=80"
+      },
+      {
+        "name": "Colosseum Underground",
+        "city": "Rome",
+        "description": "Descend into the hypogeum where gladiators and exotic animals waited before battle.",
+        "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&q=80"
+      },
+      {
+        "name": "Murano Glass Blowing",
+        "city": "Venice",
+        "description": "Take a boat to Murano island to watch master glassblowers create intricate art.",
+        "image": "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80"
+      }
+    ],
+    "recommendations": [
+      {
+        "title": "Comfortable Walking Shoes",
+        "description": "Italian city centers have many cobblestone streets. Pack your most comfortable sneakers or walking shoes.",
+        "icon": "👟"
+      },
+      {
+        "title": "Pre-book Major Attractions",
+        "description": "Skip the long lines by booking tickets for the Colosseum, Vatican, and Uffizi Gallery well in advance.",
+        "icon": "🎫"
+      },
+      {
+        "title": "Validate Train Tickets",
+        "description": "Always remember to validate your regional train tickets at the machine on the platform before boarding.",
+        "icon": "🚄"
+      },
+      {
+        "title": "Cash for Small Purchases",
+        "description": "While cards are widely accepted, it's good to have some Euros for small cafes, gelato, or tipping.",
+        "icon": "💶"
+      },
+      {
+        "title": "Learn Italian Greetings",
+        "description": "A simple 'Buongiorno' (Good morning) or 'Grazie' (Thank you) goes a long way.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Watch Your Belongings",
+        "description": "Stay alert for pickpockets in crowded tourist areas or on busy public transit.",
+        "icon": "🎒"
+      }
+    ],
+    "flights": {
+      "outbound": {
+        "label": "Outbound – May 22",
+        "legs": [
+          {
+            "from": "Istanbul Sabiha Gökçen (SAW)",
+            "to": "Sofia (SOF)",
+            "departure": "11:00",
+            "arrival": "12:20",
+            "airline": "Pegasus",
+            "flightNo": "PC271",
+            "pnr": "1RN11M",
+            "icon": "✈️"
+          },
+          {
+            "from": "Sofia (SOF)",
+            "to": "Rome Fiumicino (FCO)",
+            "departure": "18:55",
+            "arrival": "20:00",
+            "airline": "Wizz Air",
+            "pnr": "ZJY6QI",
+            "icon": "✈️"
+          }
+        ],
+        "cities": [
+          "Istanbul",
+          "Sofia",
+          "Rome"
+        ],
+        "coords": [
+          {
+            "x": 82,
+            "y": 38
+          },
+          {
+            "x": 58,
+            "y": 32
+          },
+          {
+            "x": 35,
+            "y": 42
+          }
+        ]
+      },
+      "return": {
+        "label": "Return – May 31",
+        "legs": [
+          {
+            "from": "Venice Treviso (TSF)",
+            "to": "Sofia (SOF)",
+            "departure": "08:00",
+            "arrival": "10:45",
+            "airline": "Ryanair",
+            "flightNo": "FR6428",
+            "icon": "✈️"
+          },
+          {
+            "from": "Sofia (SOF)",
+            "to": "Istanbul Sabiha Gökçen (SAW)",
+            "departure": "18:45",
+            "arrival": "20:00",
+            "airline": "Pegasus",
+            "flightNo": "PC272",
+            "pnr": "1RN11M",
+            "icon": "✈️"
+          }
+        ],
+        "cities": [
+          "Venice",
+          "Sofia",
+          "Istanbul"
+        ],
+        "coords": [
+          {
+            "x": 33,
+            "y": 30
+          },
+          {
+            "x": 58,
+            "y": 32
+          },
+          {
+            "x": 82,
+            "y": 38
+          }
+        ]
+      }
+    },
+    "trains": [
+      {
+        "label": "Rome → Florence – May 26",
+        "from": "Roma Termini",
+        "to": "Firenze S.M.N.",
+        "departure": "10:00",
+        "arrival": "11:30",
+        "date": "May 26, 2026",
+        "company": "Trenitalia",
+        "trainNo": "FR 9414",
+        "pnr": "XYZT45",
+        "icon": "🚄"
+      },
+      {
+        "label": "Florence → Venice – May 29",
+        "from": "Firenze S.M.N.",
+        "to": "Venezia Santa Lucia",
+        "departure": "09:00",
+        "arrival": "11:05",
+        "date": "May 29, 2026",
+        "company": "Trenitalia",
+        "trainNo": "FR 8516",
+        "pnr": "MNOP78",
+        "icon": "🚄"
+      }
+    ]
+  },
+  "cities": [
+    {
+      "id": "sofya",
+      "name": "Sofia",
+      "coverImage": "https://images.unsplash.com/photo-1627716803589-4406fa5fb256?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "dates": "May 22 & May 31, 2026",
+      "nights": 0,
+      "days": 0,
+      "isTransit": true,
+      "shortDescription": "Your transit hub on both outbound and return flights. Explore Alexander Nevsky Cathedral and the historic center during layovers.",
+      "transport": {
+        "arrival": {
+          "type": "Flight",
+          "icon": "✈️",
+          "from": "Istanbul Sabiha Gökçen (SAW)",
+          "to": "Sofia Airport (SOF)",
+          "date": "May 22, 2026",
+          "time": "11:00 – 12:20",
+          "flightNo": "PC271",
+          "pnr": "1RN11M"
+        },
+        "departure": {
+          "type": "Flight",
+          "icon": "✈️",
+          "from": "Sofia Airport (SOF)",
+          "to": "Rome Fiumicino (FCO)",
+          "date": "May 22, 2026",
+          "time": "18:55 – 20:00",
+          "flightNo": "Wizz Air",
+          "pnr": "ZJY6QI"
+        }
+      },
+      "accommodation": {
+        "name": "Airport Transit (Layover)",
+        "address": "Sofia Airport (SOF), Terminal 2",
+        "checkIn": "12:20 (arrival)",
+        "checkOut": "18:55 (departure)",
+        "mapsLink": "https://maps.google.com/?q=Sofia+Airport"
+      },
+      "mustSee": [
+        {
+          "name": "Alexander Nevsky Cathedral",
+          "description": "A stunning Orthodox basilica with golden domes, one of the largest in the world.",
+          "image": "https://images.unsplash.com/photo-1627716803589-4406fa5fb256?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+          "name": "Vitosha Boulevard",
+          "description": "Sofia's main commercial street, lined with cafes and shops with the Vitosha mountain in the background.",
+          "image": "https://images.unsplash.com/photo-1620586938221-3d23dc70beec?w=800&q=80"
+        },
+        {
+          "name": "Ancient Serdica",
+          "description": "Roman ruins perfectly integrated into the modern metro station at the heart of the city.",
+          "image": "https://images.unsplash.com/photo-1630139191630-9bca0b05b38a?w=800&q=80"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Outbound – May 22 (Thursday)",
+          "title": "Outbound Layover – 6.5 Hours",
+          "activities": [
+            {
+              "time": "12:20",
+              "activity": "Arrive at Sofia Airport (Pegasus PC271) ✈️"
+            },
+            {
+              "time": "12:45",
+              "activity": "Collect luggage & exit airport"
+            },
+            {
+              "time": "13:30",
+              "activity": "Metro to city center (Serdika station) 🚇"
+            },
+            {
+              "time": "14:00",
+              "activity": "Visit Alexander Nevsky Cathedral ⛪"
+            },
+            {
+              "time": "15:00",
+              "activity": "Walk along Vitosha Boulevard & coffee ☕"
+            },
+            {
+              "time": "16:00",
+              "activity": "Late lunch – local Bulgarian cuisine 🍽️"
+            },
+            {
+              "time": "17:00",
+              "activity": "Return to airport (metro)"
+            },
+            {
+              "time": "18:55",
+              "activity": "Depart to Rome via Wizz Air ✈️"
+            }
+          ]
+        },
+        {
+          "day": "Return – May 31 (Saturday)",
+          "title": "Return Layover – 8 Hours",
+          "activities": [
+            {
+              "time": "10:45",
+              "activity": "Arrive at Sofia Airport (Ryanair FR6428) ✈️"
+            },
+            {
+              "time": "11:15",
+              "activity": "Collect luggage & exit airport"
+            },
+            {
+              "time": "12:00",
+              "activity": "Metro to city center 🚇"
+            },
+            {
+              "time": "12:30",
+              "activity": "Explore Serdika ancient ruins 🏛️"
+            },
+            {
+              "time": "13:30",
+              "activity": "Lunch at a central restaurant"
+            },
+            {
+              "time": "14:30",
+              "activity": "Sveta Nedelya Square & Banya Bashi Mosque"
+            },
+            {
+              "time": "15:30",
+              "activity": "Central Market Hall – souvenir shopping 🛍️"
+            },
+            {
+              "time": "16:30",
+              "activity": "Return to airport"
+            },
+            {
+              "time": "18:45",
+              "activity": "Depart to Istanbul via Pegasus PC272 ✈️"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "roma",
+      "name": "Rome",
+      "coverImage": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&q=80",
+      "dates": "May 22 – 26, 2026",
+      "nights": 4,
+      "days": 3,
+      "shortDescription": "Get lost in the ancient streets of the Eternal City and discover the world's most iconic landmarks.",
+      "transport": {
+        "arrival": {
+          "type": "Flight",
+          "icon": "✈️",
+          "from": "Istanbul Sabiha Gökçen (SAW)",
+          "to": "Rome Fiumicino (FCO)",
+          "date": "May 22, 2026",
+          "time": "11:00 – 20:00 (via Sofia)",
+          "flightNo": "PC271 / Wizz Air",
+          "pnr": "1RN11M"
+        },
+        "departure": {
+          "type": "Train",
+          "icon": "🚄",
+          "from": "Roma Termini",
+          "to": "Firenze S.M.N.",
+          "date": "May 26, 2026",
+          "time": "10:00 – 11:30",
+          "trainNo": "FR 9414",
+          "pnr": "XYZT45"
+        }
+      },
+      "accommodation": {
+        "name": "Hotel Raphael",
+        "address": "Largo Febo, 2, 00186 Roma RM, Italy",
+        "checkIn": "May 22, 2026 – 22:00",
+        "checkOut": "May 26, 2026 – 10:00",
+        "mapsLink": "https://maps.google.com/?q=Hotel+Raphael+Roma",
+        "confirmationNo": "HR-982341",
+        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+      },
+      "mustSee": [
+        {
+          "name": "The Colosseum",
+          "description": "The iconic ancient Roman gladiatorial arena, a symbol of Rome's historical might.",
+          "image": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80"
+        },
+        {
+          "name": "Trevi Fountain",
+          "description": "Rome's largest and most famous Baroque fountain. Don't forget to toss a coin!",
+          "image": "https://images.unsplash.com/photo-1601618037624-adfe90b84c78?w=800&q=80"
+        },
+        {
+          "name": "Vatican Museums & Sistine Chapel",
+          "description": "Home to immense Renaissance masterpieces and Michelangelo's famous ceiling.",
+          "image": "https://images.unsplash.com/photo-1549643444-2458428178d4?w=800&q=80"
+        },
+        {
+          "name": "Pantheon",
+          "description": "A former Roman temple, featuring the world's largest unreinforced concrete dome.",
+          "image": "https://images.unsplash.com/photo-1552093755-9afae5076404?w=800&q=80"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Day 1 – May 23 (Friday)",
+          "title": "Explore Rome",
+          "activities": [
+            {
+              "time": "09:00",
+              "activity": "Breakfast (hotel)"
+            },
+            {
+              "time": "10:00",
+              "activity": "Piazza Navona & Pantheon walk"
+            },
+            {
+              "time": "12:30",
+              "activity": "Lunch in Trastevere 🍝"
+            },
+            {
+              "time": "14:00",
+              "activity": "Check-in at hotel"
+            },
+            {
+              "time": "15:00",
+              "activity": "Trevi Fountain & Spanish Steps"
+            },
+            {
+              "time": "18:00",
+              "activity": "Sunset at Trevi Fountain"
+            },
+            {
+              "time": "20:00",
+              "activity": "Dinner near Spanish Steps"
+            }
+          ]
+        },
+        {
+          "day": "Day 2 – May 24 (Saturday)",
+          "title": "Ancient Rome",
+          "activities": [
+            {
+              "time": "08:30",
+              "activity": "Breakfast (hotel)"
+            },
+            {
+              "time": "09:30",
+              "activity": "Colosseum guided tour 🏟️"
+            },
+            {
+              "time": "12:00",
+              "activity": "Roman Forum & Palatine Hill"
+            },
+            {
+              "time": "13:30",
+              "activity": "Lunch in Monti neighborhood"
+            },
+            {
+              "time": "15:00",
+              "activity": "Circo Massimo & Aventine Hill"
+            },
+            {
+              "time": "17:00",
+              "activity": "Orange Garden (panoramic view) 🍊"
+            },
+            {
+              "time": "20:00",
+              "activity": "Dinner at Campo de' Fiori"
+            }
+          ]
+        },
+        {
+          "day": "Day 3 – May 25 (Sunday)",
+          "title": "Vatican & Art",
+          "activities": [
+            {
+              "time": "07:30",
+              "activity": "Early breakfast"
+            },
+            {
+              "time": "08:00",
+              "activity": "Vatican Museums & Sistine Chapel (early entry) 🎨"
+            },
+            {
+              "time": "11:00",
+              "activity": "St. Peter's Basilica & Dome climb"
+            },
+            {
+              "time": "13:00",
+              "activity": "Lunch in Borgo area"
+            },
+            {
+              "time": "15:00",
+              "activity": "Castel Sant'Angelo"
+            },
+            {
+              "time": "17:00",
+              "activity": "Shopping on Via del Corso 🛍️"
+            },
+            {
+              "time": "19:30",
+              "activity": "Aperitivo at Piazza del Popolo"
+            },
+            {
+              "time": "21:00",
+              "activity": "Last Rome night dinner"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "floransa",
+      "name": "Florence",
+      "coverImage": "https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?w=1200&q=80",
+      "dates": "May 26 – 29, 2026",
+      "nights": 3,
+      "days": 3,
+      "shortDescription": "The cradle of the Renaissance awaits with stunning art, architecture, and unforgettable Tuscan flavors.",
+      "transport": {
+        "arrival": {
+          "type": "Train",
+          "icon": "🚄",
+          "from": "Roma Termini",
+          "to": "Firenze S.M.N.",
+          "date": "May 26, 2026",
+          "time": "10:00 – 11:30",
+          "trainNo": "FR 9414",
+          "pnr": "XYZT45"
+        },
+        "departure": {
+          "type": "Train",
+          "icon": "🚄",
+          "from": "Firenze S.M.N.",
+          "to": "Venezia Santa Lucia",
+          "date": "May 29, 2026",
+          "time": "09:00 – 11:05",
+          "trainNo": "FR 8516",
+          "pnr": "MNOP78"
+        }
+      },
+      "accommodation": {
+        "name": "Hotel Lungarno",
+        "address": "Borgo San Jacopo, 14, 50125 Firenze FI, Italy",
+        "checkIn": "May 26, 2026 – 14:00",
+        "checkOut": "May 29, 2026 – 09:00",
+        "mapsLink": "https://maps.google.com/?q=Hotel+Lungarno+Firenze",
+        "confirmationNo": "HL-556712",
+        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80"
+      },
+      "mustSee": [
+        {
+          "name": "Florence Cathedral (Il Duomo)",
+          "description": "Florence's iconic cathedral with a massive dome engineered by Filippo Brunelleschi.",
+          "image": "https://images.unsplash.com/photo-1541370976299-4d24ebbc9077?w=800&q=80"
+        },
+        {
+          "name": "Uffizi Gallery",
+          "description": "One of the world's most prominent art museums, showcasing Renaissance masterpieces.",
+          "image": "https://images.unsplash.com/photo-1534008897995-27a23e859048?w=800&q=80"
+        },
+        {
+          "name": "Ponte Vecchio",
+          "description": "A picturesque medieval stone closed-spandrel arch bridge over the Arno River.",
+          "image": "https://images.unsplash.com/photo-1543622748-5bc83489886a?w=800&q=80"
+        },
+        {
+          "name": "Accademia Gallery",
+          "description": "Famous for housing Michelangelo's original marble statue of David.",
+          "image": "https://images.unsplash.com/photo-1579450841243-d64afef10a76?w=800&q=80"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Day 1 – May 26 (Monday)",
+          "title": "Arrival & First Impressions",
+          "activities": [
+            {
+              "time": "11:30",
+              "activity": "Arrive at Firenze S.M.N. station"
+            },
+            {
+              "time": "12:00",
+              "activity": "Lunch at Mercato Centrale 🥩"
+            },
+            {
+              "time": "14:00",
+              "activity": "Check-in at hotel"
+            },
+            {
+              "time": "15:00",
+              "activity": "Visit Duomo & Baptistery ⛪"
+            },
+            {
+              "time": "17:00",
+              "activity": "Climb Giotto's Bell Tower (panoramic views)"
+            },
+            {
+              "time": "19:00",
+              "activity": "Aperitivo at Piazza della Repubblica"
+            },
+            {
+              "time": "20:30",
+              "activity": "Dinner in Oltrarno"
+            }
+          ]
+        },
+        {
+          "day": "Day 2 – May 27 (Tuesday)",
+          "title": "Art & Renaissance",
+          "activities": [
+            {
+              "time": "08:00",
+              "activity": "Breakfast (hotel)"
+            },
+            {
+              "time": "08:30",
+              "activity": "Uffizi Gallery (early entry ticket) 🖼️"
+            },
+            {
+              "time": "12:00",
+              "activity": "Walk across Ponte Vecchio"
+            },
+            {
+              "time": "13:00",
+              "activity": "Lunch in San Lorenzo area"
+            },
+            {
+              "time": "15:00",
+              "activity": "Accademia Gallery (David statue) 🗿"
+            },
+            {
+              "time": "17:00",
+              "activity": "Shopping at San Lorenzo Market"
+            },
+            {
+              "time": "19:00",
+              "activity": "Sunset at Piazzale Michelangelo 🌅"
+            },
+            {
+              "time": "21:00",
+              "activity": "Bistecca alla Fiorentina experience"
+            }
+          ]
+        },
+        {
+          "day": "Day 3 – May 28 (Wednesday)",
+          "title": "Tuscany Day Trip",
+          "activities": [
+            {
+              "time": "08:00",
+              "activity": "Early breakfast"
+            },
+            {
+              "time": "09:00",
+              "activity": "Day trip to Chianti region 🍷"
+            },
+            {
+              "time": "11:00",
+              "activity": "Vineyard tour & wine tasting"
+            },
+            {
+              "time": "13:00",
+              "activity": "Lunch in Greve in Chianti"
+            },
+            {
+              "time": "15:00",
+              "activity": "Visit San Gimignano towers"
+            },
+            {
+              "time": "18:00",
+              "activity": "Return to Florence"
+            },
+            {
+              "time": "20:00",
+              "activity": "Farewell dinner at Santa Croce square"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "venedik",
+      "name": "Venice",
+      "coverImage": "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&q=80",
+      "dates": "May 29 – 31, 2026",
+      "nights": 2,
+      "days": 2,
+      "shortDescription": "Gondolas, masks, and enchanting canals await in this magical floating city.",
+      "transport": {
+        "arrival": {
+          "type": "Train",
+          "icon": "🚄",
+          "from": "Firenze S.M.N.",
+          "to": "Venezia Santa Lucia",
+          "date": "May 29, 2026",
+          "time": "09:00 – 11:05",
+          "trainNo": "FR 8516",
+          "pnr": "MNOP78"
+        },
+        "departure": {
+          "type": "Flight",
+          "icon": "✈️",
+          "from": "Venice Treviso (TSF)",
+          "to": "Istanbul Sabiha Gökçen (SAW)",
+          "date": "May 31, 2026",
+          "time": "08:00 – 20:00 (via Sofia)",
+          "flightNo": "FR6428 / PC272",
+          "pnr": "1RN11M"
+        }
+      },
+      "accommodation": {
+        "name": "Hotel Danieli",
+        "address": "Riva degli Schiavoni, 4196, 30122 Venezia VE, Italy",
+        "checkIn": "May 29, 2026 – 14:00",
+        "checkOut": "May 31, 2026 – 05:30",
+        "mapsLink": "https://maps.google.com/?q=Hotel+Danieli+Venezia",
+        "confirmationNo": "HD-334289",
+        "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80"
+      },
+      "mustSee": [
+        {
+          "name": "St. Mark's Basilica & Square",
+          "description": "The principal public square of Venice, dominated by the magnificent Byzantine basilica.",
+          "image": "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80"
+        },
+        {
+          "name": "Grand Canal",
+          "description": "The major water-traffic corridor in the city, best experienced via Vaporetto or Gondola.",
+          "image": "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=800&q=80"
+        },
+        {
+          "name": "Rialto Bridge",
+          "description": "The oldest of the four bridges spanning the Grand Canal, renowned for its architecture.",
+          "image": "https://images.unsplash.com/photo-1550503056-b09eecd5ad7f?w=800&q=80"
+        },
+        {
+          "name": "Doge's Palace",
+          "description": "A masterpiece of Gothic architecture, the former residence of the Doge of Venice.",
+          "image": "https://images.unsplash.com/photo-1534065431633-db291e0a811d?w=800&q=80"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Day 1 – May 29 (Thursday)",
+          "title": "Welcome to Venice",
+          "activities": [
+            {
+              "time": "11:05",
+              "activity": "Arrive at Venezia Santa Lucia station"
+            },
+            {
+              "time": "11:30",
+              "activity": "Vaporetto transfer to hotel 🚢"
+            },
+            {
+              "time": "12:30",
+              "activity": "Lunch near Rialto Bridge"
+            },
+            {
+              "time": "14:00",
+              "activity": "Check-in at hotel"
+            },
+            {
+              "time": "15:00",
+              "activity": "St. Mark's Square & Basilica ⛪"
+            },
+            {
+              "time": "17:00",
+              "activity": "Doge's Palace tour"
+            },
+            {
+              "time": "19:00",
+              "activity": "Gondola ride (sunset) 🛨"
+            },
+            {
+              "time": "21:00",
+              "activity": "Dinner near St. Mark's"
+            }
+          ]
+        },
+        {
+          "day": "Day 2 – May 30 (Friday)",
+          "title": "Islands & Art",
+          "activities": [
+            {
+              "time": "08:00",
+              "activity": "Breakfast (hotel)"
+            },
+            {
+              "time": "09:00",
+              "activity": "Boat tour to Murano island (glass workshops) 🔮"
+            },
+            {
+              "time": "11:00",
+              "activity": "Burano island (colorful houses & lace) 🌈"
+            },
+            {
+              "time": "13:00",
+              "activity": "Seafood lunch in Burano 🦐"
+            },
+            {
+              "time": "15:00",
+              "activity": "Return to Venice"
+            },
+            {
+              "time": "16:00",
+              "activity": "Peggy Guggenheim Collection 🎨"
+            },
+            {
+              "time": "18:30",
+              "activity": "Sunset at Accademia Bridge"
+            },
+            {
+              "time": "20:00",
+              "activity": "Dinner in Dorsoduro"
+            }
+          ]
+        },
+        {
+          "day": "Day 3 – May 31 (Saturday)",
+          "title": "Departure Day",
+          "activities": [
+            {
+              "time": "05:30",
+              "activity": "Early breakfast & packing"
+            },
+            {
+              "time": "06:00",
+              "activity": "Check-out & transfer to Venice Treviso Airport"
+            },
+            {
+              "time": "08:00",
+              "activity": "Depart to Sofia via Ryanair FR6428 ✈️"
+            },
+            {
+              "time": "10:45",
+              "activity": "Arrive Sofia Airport – layover"
+            },
+            {
+              "time": "18:45",
+              "activity": "Depart to Istanbul via Pegasus PC272 ✈️"
+            },
+            {
+              "time": "20:00",
+              "activity": "Arrive Istanbul Sabiha Gökçen Airport 🏠"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

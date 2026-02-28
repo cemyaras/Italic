@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Detail – Italy Trip</title>
+    <meta name="description" content="Italy trip city details: itinerary, accommodation and transport information." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        html {
+            background: #0A1128;
+            overscroll-behavior: none;
+        }
+
+        body {
+            background: #0A1128;
+            overscroll-behavior: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 23px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #3b82f6 0%, #1e40af 50%, #131F3D 100%);
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 3px solid #1e3a5f;
+            position: absolute;
+            left: 18px;
+            top: 4px;
+            z-index: 1;
+        }
+
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .copy-btn.copied {
+            background: #16a34a !important;
+            color: white !important;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased text-slate-300">
+
+    <!-- Back Button (floating) -->
+    <a href="index.html" id="back-button"
+        class="fixed top-4 left-4 z-50 bg-white/5 backdrop-blur-md shadow-lg rounded-full px-4 py-2.5 flex items-center gap-2 text-sm font-medium text-slate-300 hover:bg-white/10 hover:text-white hover:shadow-xl transition-all duration-200 border border-white/10">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Home
+    </a>
+
+    <!-- City Hero -->
+    <section class="relative h-[340px] sm:h-[420px] overflow-hidden" id="city-hero">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#0A1128] z-10"></div>
+        <img id="city-cover" src="" alt="" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="relative z-20 h-full flex flex-col justify-end max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+            <div class="fade-in">
+                <p class="text-amber-300/80 text-sm font-medium tracking-widest uppercase mb-2" id="city-dates"></p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight" id="city-name">
+                    Loading...</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+
+        <!-- Transport & Accommodation Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-14" id="info-cards">
+
+            <!-- Transport Card: Arrival -->
+            <div class="info-card rounded-2xl shadow-md overflow-hidden fade-in" id="transport-arrival-card">
+                <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl" id="arrival-icon">✈️</span>
+                        <div>
+                            <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Arrival</p>
+                            <p class="text-white font-semibold" id="arrival-type">Flight</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4" id="arrival-details">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+
+            <!-- Transport Card: Departure -->
+            <div class="info-card rounded-2xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.1s"
+                id="transport-departure-card">
+                <div class="bg-gradient-to-r from-amber-600 to-amber-700 px-6 py-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl" id="departure-icon">🚄</span>
+                        <div>
+                            <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Departure</p>
+                            <p class="text-white font-semibold" id="departure-type">Train</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 space-y-4" id="departure-details">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+
+            <!-- Accommodation Card -->
+            <div class="info-card rounded-2xl shadow-md overflow-hidden fade-in lg:col-span-2"
+                style="animation-delay: 0.2s" id="accommodation-card">
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">🏨</span>
+                        <div>
+                            <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Accommodation</p>
+                            <p class="text-white font-semibold" id="hotel-name">Hotel</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6" id="accommodation-details">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Must See & Activities Section -->
+        <div id="must-see-section" class="mb-16 hidden">
+            <div class="text-center mb-8 fade-in">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">📸 Görülmesi Gereken Yerler</h2>
+                <p class="text-slate-400">Must see attractions & activities in the city</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="must-see-container">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+
+        <!-- Itinerary Timeline -->
+        <div id="itinerary-section">
+            <div class="text-center mb-10 fade-in">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">📅 Itinerary</h2>
+                <p class="text-slate-400">Your detailed day-by-day travel plan</p>
+            </div>
+
+            <div class="space-y-10" id="itinerary-container">
+                <!-- Days rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 mt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p class="text-sm text-slate-500">
+                ✨ Bon Voyage! • <span id="footer-year"></span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="chat.js"></script>
+</body>
+
+</html>
