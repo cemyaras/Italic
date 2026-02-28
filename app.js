@@ -112,19 +112,19 @@ function buildFlightCard(direction, colorFrom, colorTo, badgeColor) {
     : null;
 
   return `
-    <div class="glass-card rounded-2xl shadow-md overflow-hidden fade-in" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px)">
-      <div class="bg-gradient-to-r ${colorFrom} ${colorTo} px-6 py-4">
+    <div class="glass-card rounded-3xl shadow-lg overflow-hidden fade-in" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+      <div class="bg-gradient-to-r ${colorFrom} ${colorTo} px-6 py-4 border-b border-white/10">
         <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span class="text-2xl">✈️</span>
+          <div class="flex items-center gap-4">
+            <span class="text-3xl drop-shadow-md">✈️</span>
             <div>
-              <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Flight</p>
-              <p class="text-white font-bold text-lg">${direction.label}</p>
+              <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">Flight</p>
+              <p class="text-white font-bold text-lg drop-shadow-sm">${direction.label}</p>
             </div>
           </div>
           ${direction.legs.length > 1 ? `
-          <div class="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1.5">
-            <p class="text-white text-xs font-medium">1 Layover</p>
+          <div class="bg-black/20 backdrop-blur-md rounded-full px-4 py-1.5 border border-white/10 shadow-inner">
+            <p class="text-white text-xs font-bold tracking-wide">1 Layover</p>
           </div>` : ''}
         </div>
       </div>
@@ -157,10 +157,10 @@ function buildFlightCard(direction, colorFrom, colorTo, badgeColor) {
               <p class="text-base font-bold ${badgeColor} tabular-nums">${leg.arrival}</p>
             </div>
           </div>
-          <div class="flex flex-wrap items-center gap-2 pt-0.5">
-            ${leg.airline ? `<span class="text-xs font-semibold text-amber-300 bg-amber-500/10 rounded-md px-2 py-0.5">${leg.airline}</span>` : ''}
-            ${leg.flightNo ? `<span class="text-xs font-mono text-slate-300 bg-white/5 rounded-md px-2 py-0.5">${leg.flightNo}</span>` : ''}
-            ${leg.pnr ? `<span class="text-xs font-mono text-blue-300 bg-blue-500/10 rounded-md px-2 py-0.5">PNR: ${leg.pnr}</span>` : ''}
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            ${leg.airline ? `<span class="text-xs font-semibold text-slate-200 bg-white/5 border border-white/10 rounded-md px-2.5 py-1 box-shadow-sm">${leg.airline}</span>` : ''}
+            ${leg.flightNo ? `<span class="text-xs font-mono font-medium text-slate-300 bg-white/5 border border-white/10 rounded-md px-2.5 py-1">${leg.flightNo}</span>` : ''}
+            ${leg.pnr ? `<span class="text-xs font-mono font-bold text-blue-300 bg-blue-500/10 border border-blue-500/20 rounded-md px-2.5 py-1">PNR: ${leg.pnr}</span>` : ''}
           </div>
         `).join('')}
       </div>
@@ -183,25 +183,25 @@ function renderFlights(flights) {
   if (!container || !flights) return;
 
   container.innerHTML =
-    buildFlightCard(flights.outbound, 'from-blue-600', 'to-blue-700', 'text-blue-400') +
-    buildFlightCard(flights.return, 'from-amber-600', 'to-amber-700', 'text-amber-400');
+    buildFlightCard(flights.outbound, 'from-[#1e3a8a]', 'to-[#2563eb]', 'text-blue-400') +
+    buildFlightCard(flights.return, 'from-[#9a3412]', 'to-[#f59e0b]', 'text-orange-400');
 }
 
 // ─── Train Card Builder ────────────────────────────────────────
 function buildTrainCard(train) {
   return `
-    <div class="glass-card rounded-2xl shadow-md overflow-hidden fade-in" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px)">
-      <div class="bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-3">
+    <div class="glass-card rounded-3xl shadow-lg overflow-hidden fade-in" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+      <div class="bg-gradient-to-r from-purple-800 to-fuchsia-600 px-6 py-4 border-b border-white/10">
         <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span class="text-2xl">${train.icon}</span>
+          <div class="flex items-center gap-4">
+            <span class="text-3xl drop-shadow-md">${train.icon}</span>
             <div>
-              <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Train</p>
-              <p class="text-white font-bold text-base">${train.label}</p>
+              <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">Train</p>
+              <p class="text-white font-bold text-lg drop-shadow-sm">${train.label}</p>
             </div>
           </div>
-          <div class="bg-white/20 backdrop-blur-sm rounded-lg px-3 py-1">
-            <p class="text-white text-xs font-medium">${train.company}</p>
+          <div class="bg-black/20 backdrop-blur-md rounded-full px-4 py-1.5 border border-white/10 shadow-inner">
+            <p class="text-white text-xs font-bold tracking-wide">${train.company}</p>
           </div>
         </div>
       </div>
@@ -223,11 +223,11 @@ function buildTrainCard(train) {
             <p class="text-base font-bold text-purple-400 tabular-nums">${train.arrival}</p>
           </div>
         </div>
-        <div class="flex flex-wrap items-center gap-2 pt-0.5">
-          <span class="text-xs font-semibold text-purple-300 bg-purple-500/10 rounded-md px-2 py-0.5">${train.company}</span>
-          <span class="text-xs font-mono text-slate-300 bg-white/5 rounded-md px-2 py-0.5">${train.trainNo}</span>
-          ${train.pnr ? `<span class="text-xs font-mono text-blue-300 bg-blue-500/10 rounded-md px-2 py-0.5">PNR: ${train.pnr}</span>` : ''}
-          <span class="text-xs text-slate-400 bg-white/5 rounded-md px-2 py-0.5">${train.date}</span>
+        <div class="flex flex-wrap items-center gap-2 pt-1">
+          <span class="text-xs font-semibold text-purple-200 bg-purple-500/20 border border-purple-500/30 rounded-md px-2.5 py-1 shadow-sm">${train.company}</span>
+          <span class="text-xs font-mono font-medium text-slate-300 bg-white/5 border border-white/10 rounded-md px-2.5 py-1">${train.trainNo}</span>
+          ${train.pnr ? `<span class="text-xs font-mono font-bold text-blue-300 bg-blue-500/10 border border-blue-500/20 rounded-md px-2.5 py-1">PNR: ${train.pnr}</span>` : ''}
+          <span class="text-xs font-medium text-slate-400 bg-white/5 border border-white/10 rounded-md px-2.5 py-1">${train.date}</span>
         </div>
       </div>
     </div>
@@ -392,19 +392,19 @@ function renderRouteMap() {
 function buildHighlightCard(item, delayIndex) {
   const searchQuery = encodeURIComponent(item.name + ' ' + (item.city !== 'All Cities' ? item.city : 'Italy') + ' travel');
   return `
-    <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="card-hover glass-card rounded-2xl shadow-md overflow-hidden slide-up group block" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px)">
-      <div class="relative h-48 overflow-hidden">
-        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-        <div class="absolute top-3 left-3 bg-black/50 backdrop-blur-md rounded-lg px-2 py-1 border border-white/10">
-          <span class="text-xs font-semibold text-white tracking-widest uppercase">${item.city}</span>
+    <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="flex-none w-[280px] sm:w-[320px] snap-start card-hover glass-card rounded-3xl shadow-xl overflow-hidden slide-up group block" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+      <div class="relative h-56 overflow-hidden">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-[#050c1a]/20 to-transparent"></div>
+        <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 shadow-lg">
+          <span class="text-xs font-bold text-white tracking-widest uppercase">${item.city}</span>
         </div>
-        <div class="absolute bottom-3 left-4 right-4">
-          <h3 class="text-white font-bold text-lg leading-tight shadow-sm">${item.name}</h3>
+        <div class="absolute bottom-4 left-5 right-5">
+          <h3 class="text-white font-extrabold text-xl leading-tight shadow-sm drop-shadow-md">${item.name}</h3>
         </div>
       </div>
-      <div class="p-4">
-        <p class="text-sm text-slate-300 leading-relaxed">${item.description}</p>
+      <div class="p-5">
+        <p class="text-sm text-slate-300 leading-relaxed font-light">${item.description}</p>
       </div>
     </a>
   `;
@@ -412,13 +412,13 @@ function buildHighlightCard(item, delayIndex) {
 
 function buildRecommendationCard(item, delayIndex) {
   return `
-    <div class="flex gap-4 p-5 rounded-2xl shadow-sm slide-up" style="animation-delay: ${delayIndex * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05)">
-      <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10 text-2xl">
+    <div class="glass-card flex gap-4 p-5 rounded-2xl shadow-lg slide-up" style="animation-delay: ${delayIndex * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+      <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10 text-2xl shadow-inner">
         ${item.icon}
       </div>
-      <div>
-        <h3 class="text-white font-bold text-lg mb-1">${item.title}</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">${item.description}</p>
+      <div class="flex flex-col justify-center">
+        <h3 class="text-white font-bold text-lg mb-1 tracking-wide">${item.title}</h3>
+        <p class="text-sm text-slate-400 leading-relaxed font-light">${item.description}</p>
       </div>
     </div>
   `;
@@ -439,25 +439,25 @@ function buildHomeAccommodationCard(city, delayIndex) {
   }
 
   return `
-    <div class="card-hover glass-card rounded-2xl shadow-md overflow-hidden slide-up flex flex-col justify-between group" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px)">
-      <div class="relative h-48 overflow-hidden">
-        ${acc.image ? `<img src="${acc.image}" alt="${acc.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">` : `<div class="w-full h-full bg-slate-800"></div>`}
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-        <div class="absolute top-3 left-3 bg-black/50 backdrop-blur-md rounded-lg px-2 py-1 border border-white/10">
-          <span class="text-xs font-semibold text-white tracking-widest uppercase">${city.name}</span>
+    <div class="card-hover glass-card rounded-3xl shadow-xl overflow-hidden slide-up flex flex-col justify-between group" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+      <div class="relative h-56 overflow-hidden">
+        ${acc.image ? `<img src="${acc.image}" alt="${acc.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">` : `<div class="w-full h-full bg-slate-800"></div>`}
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-transparent to-transparent"></div>
+        <div class="absolute top-4 left-4 bg-black/40 backdrop-blur-md rounded-lg px-3 py-1.5 border border-white/10 shadow-lg">
+          <span class="text-xs font-bold text-white tracking-widest uppercase">${city.name}</span>
         </div>
-        <div class="absolute bottom-3 right-3 bg-blue-500/80 backdrop-blur-md border border-blue-400/50 rounded-lg px-2 py-1 flex items-center shadow-lg">
+        <div class="absolute bottom-4 right-4 bg-blue-600/80 backdrop-blur-md border border-blue-400/30 rounded-lg px-3 py-1.5 flex items-center shadow-lg">
           <span class="text-xs text-white font-bold tracking-wide">${datesText}</span>
         </div>
       </div>
-      <div class="p-5 flex flex-col flex-1">
-        <div class="flex justify-between items-start gap-3">
+      <div class="p-6 flex flex-col flex-1">
+        <div class="flex justify-between items-start gap-4">
           <div class="flex-1">
-            <h3 class="text-white font-bold text-xl leading-tight mb-2">${acc.name}</h3>
-            <p class="text-sm text-slate-400 line-clamp-2">${acc.address}</p>
+            <h3 class="text-white font-extrabold text-xl leading-tight mb-2 drop-shadow-sm">${acc.name}</h3>
+            <p class="text-sm text-slate-400 line-clamp-2 font-light">${acc.address}</p>
           </div>
           ${acc.mapsLink ? `
-          <a href="${acc.mapsLink}" target="_blank" rel="noopener noreferrer" title="Google Haritalar'da Aç" aria-label="Google Haritalar'da Aç" class="flex-shrink-0 w-10 h-10 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white rounded-full flex items-center justify-center transition-all border border-blue-500/30">
+          <a href="${acc.mapsLink}" target="_blank" rel="noopener noreferrer" title="View on Google Maps" aria-label="View on Google Maps" class="flex-shrink-0 w-12 h-12 bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white rounded-full flex items-center justify-center transition-all border border-blue-500/30 shadow-sm">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </a>` : ''}
         </div>
@@ -539,26 +539,26 @@ function renderHomePage(data) {
   if (!grid) return;
 
   grid.innerHTML = cities.map((city, index) => `
-    <a href="city.html?id=${city.id}" class="card-hover block rounded-2xl shadow-md overflow-hidden slide-up" style="animation-delay: ${index * 0.12}s; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(8px)">
-      <div class="relative h-52 overflow-hidden">
-        <img src="${city.coverImage}" alt="${city.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" loading="lazy" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-        <div class="absolute bottom-4 left-5">
-          <h3 class="text-white text-2xl font-bold">${city.name}</h3>
-          <p class="text-amber-300/80 text-sm mt-0.5">${city.dates}</p>
+    <a href="city.html?id=${city.id}" class="card-hover block rounded-3xl shadow-xl overflow-hidden slide-up group" style="animation-delay: ${index * 0.12}s; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(16px)">
+      <div class="relative h-60 overflow-hidden">
+        <img src="${city.coverImage}" alt="${city.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-[#050c1a]/40 to-transparent"></div>
+        <div class="absolute bottom-5 left-6">
+          <h3 class="text-white text-3xl font-extrabold drop-shadow-md">${city.name}</h3>
+          <p class="text-amber-400 text-sm font-semibold tracking-wide mt-1">${city.dates}</p>
         </div>
-        ${city.isTransit ? `<div class="absolute top-3 right-3 bg-black/50 backdrop-blur-md rounded-lg px-2.5 py-1.5 flex items-center gap-1.5 border border-white/10">
+        ${city.isTransit ? `<div class="absolute top-4 right-4 bg-black/40 backdrop-blur-md rounded-lg px-3 py-1.5 flex items-center gap-1.5 border border-white/10 shadow-lg">
           <span class="text-sm">✈️</span>
-          <span class="text-xs font-semibold text-white">Transit</span>
-        </div>` : (city.nights !== undefined ? `<div class="absolute top-3 right-3 bg-black/50 backdrop-blur-md rounded-lg px-2.5 py-1.5 flex items-center gap-2 border border-white/10">
+          <span class="text-xs font-bold text-white uppercase tracking-wider">Transit</span>
+        </div>` : (city.nights !== undefined ? `<div class="absolute top-4 right-4 bg-black/40 backdrop-blur-md rounded-lg px-3 py-1.5 flex items-center gap-2 border border-white/10 shadow-lg">
           <span class="flex items-center gap-1"><span class="text-sm">🌙</span><span class="text-xs font-bold text-white">${city.nights}</span></span>
           <span class="text-white/30">·</span>
           <span class="flex items-center gap-1"><span class="text-sm">☀️</span><span class="text-xs font-bold text-white">${city.days}</span></span>
         </div>` : '')}
       </div>
-      <div class="p-5">
-        <p class="text-slate-300 text-sm leading-relaxed">${city.shortDescription}</p>
-        <div class="mt-4 flex items-center text-blue-400 text-sm font-semibold">
+      <div class="p-6">
+        <p class="text-slate-300 text-sm leading-relaxed font-light">${city.shortDescription}</p>
+        <div class="mt-5 flex items-center text-blue-400 text-sm font-semibold tracking-wide">
           <span>View Details</span>
           <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </div>
@@ -645,16 +645,16 @@ function buildMustSeeSection(mustSeeItems) {
   if (!mustSeeItems || mustSeeItems.length === 0) return '';
 
   return mustSeeItems.map((item, index) => `
-    <div class="card-hover glass-card rounded-2xl shadow-md overflow-hidden slide-up group" style="animation-delay: ${index * 0.15}s; background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(8px)">
-      <div class="relative h-48 overflow-hidden">
-        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-        <div class="absolute bottom-4 left-4 right-4">
-          <h3 class="text-white font-bold text-lg leading-tight shadow-sm">${item.name}</h3>
+    <div class="flex-none w-[280px] sm:w-[320px] snap-start card-hover glass-card rounded-3xl shadow-xl overflow-hidden slide-up group" style="animation-delay: ${index * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)">
+      <div class="relative h-56 overflow-hidden">
+        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050c1a]/90 via-[#050c1a]/20 to-transparent"></div>
+        <div class="absolute bottom-4 left-5 right-5">
+          <h3 class="text-white font-extrabold text-xl leading-tight shadow-sm drop-shadow-md">${item.name}</h3>
         </div>
       </div>
-      <div class="p-4">
-        <p class="text-sm text-slate-300 leading-relaxed">${item.description}</p>
+      <div class="p-5">
+        <p class="text-sm text-slate-300 leading-relaxed font-light">${item.description}</p>
       </div>
     </div>
   `).join('');

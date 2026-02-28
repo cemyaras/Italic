@@ -4,10 +4,19 @@
   const MODEL = 'arcee-ai/trinity-large-preview:free';
   const SYSTEM_PROMPT = `Seyahat asistanı, bilgili bir tarihçi ve deneyimli bir tur rehberisin; pratik seyahat önerileri ver ve yerlerin tarihî/kültürel arka planını kısa ve doğru şekilde açıkla; gerçek olmayan rezervasyon, saat veya fiyat üretme; emin değilsen belirsiz olduğunu belirt; Türkçe, net ve kısa cevap ver.`;
   const LS_KEY = 'openrouter_api_key';
+  const LS_MSG_KEY = 'openrouter_messages';
 
   let chatOpen = false;
   let messages = [];
+  try {
+    const saved = localStorage.getItem(LS_MSG_KEY);
+    if (saved) messages = JSON.parse(saved);
+  } catch (e) { }
   let isStreaming = false;
+
+  function saveMessages() {
+    localStorage.setItem(LS_MSG_KEY, JSON.stringify(messages));
+  }
 
   // ── Inject CSS ──
   const style = document.createElement('style');
@@ -81,8 +90,29 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 20px; flex-shrink: 0;
     }
+    .chat-header-info { flex: 1; }
     .chat-header-info h3 { font-size: 15px; font-weight: 700; color: white; margin: 0; }
     .chat-header-info p { font-size: 11px; color: rgba(255,255,255,0.5); margin: 2px 0 0; }
+
+    .chat-header-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .chat-icon-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 8px;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: rgba(255,255,255,0.7);
+      transition: all 0.2s;
+    }
+    .chat-icon-btn:hover {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+    .chat-icon-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
     /* Chat body - must be flex to constrain messages scroll */
     #chat-body {
@@ -311,6 +341,14 @@
           <h3>Travel Assistant AI</h3>
           <p>Powered by Trinity via OpenRouter</p>
         </div>
+        <div class="chat-header-actions">
+          <button class="chat-icon-btn" onclick="window.__chatClearMessages()" title="Temizle">
+            <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+          </button>
+          <button class="chat-icon-btn" onclick="window.__chatToggle()" title="Kapat">
+            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          </button>
+        </div>
       </div>
       <div id="chat-body"></div>
     `;
@@ -340,10 +378,13 @@
     const panel = document.getElementById('chat-panel');
     if (chatOpen) {
       panel.classList.add('open');
+      const input = document.getElementById('chat-input');
+      if (input) input.focus();
     } else {
       panel.classList.remove('open');
     }
   }
+  window.__chatToggle = toggleChat;
 
   function getApiKey() {
     return localStorage.getItem(LS_KEY) || '';
@@ -466,18 +507,25 @@
   }
 
   // ── Global handlers ──
+  window.__chatClearMessages = function () {
+    if (messages.length === 0) return;
+    if (confirm('Konuşma geçmişini silmek istediğinize emin misiniz?')) {
+      messages = [];
+      saveMessages();
+      renderMessages();
+    }
+  };
+
   window.__chatSaveKey = function () {
     const input = document.getElementById('api-key-input');
     const key = input ? input.value.trim() : '';
     if (!key) return;
     localStorage.setItem(LS_KEY, key);
-    messages = [];
     renderBody();
   };
 
   window.__chatClearKey = function () {
     localStorage.removeItem(LS_KEY);
-    messages = [];
     renderBody();
   };
 
@@ -489,6 +537,7 @@
 
     // Add user message
     messages.push({ role: 'user', content: text });
+    saveMessages();
     input.value = '';
     renderMessages();
 
@@ -539,6 +588,7 @@
       if (thinking.parentNode) thinking.remove();
 
       messages.push({ role: 'assistant', content: assistantContent });
+      saveMessages();
       renderMessages();
     } catch (err) {
       if (thinking.parentNode) thinking.remove();

@@ -30,13 +30,19 @@
         }
 
         html {
-            background: #0A1128;
+            background: #050c1a;
             overscroll-behavior: none;
         }
 
         body {
-            background: #0A1128;
+            background: #050c1a;
+            background-image: radial-gradient(circle at 15% 50%, rgba(0, 255, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(99, 102, 241, 0.02) 0%, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
             overscroll-behavior: none;
+            color: #e2e8f0;
         }
 
         .fade-in {
@@ -99,17 +105,44 @@
         }
 
         .info-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .info-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Premium horizontal scrollbar */
+        .premium-scrollbar::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .premium-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .premium-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+        }
+
+        .premium-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .premium-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
@@ -127,12 +160,13 @@
 
     <!-- City Hero -->
     <section class="relative h-[340px] sm:h-[420px] overflow-hidden" id="city-hero">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#0A1128] z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-[#050c1a] z-10"></div>
         <img id="city-cover" src="" alt="" class="absolute inset-0 w-full h-full object-cover" />
         <div class="relative z-20 h-full flex flex-col justify-end max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
             <div class="fade-in">
-                <p class="text-amber-300/80 text-sm font-medium tracking-widest uppercase mb-2" id="city-dates"></p>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight" id="city-name">
+                <p class="text-amber-400/90 text-sm font-bold tracking-widest uppercase mb-2" id="city-dates"></p>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight drop-shadow-lg"
+                    id="city-name">
                     Loading...</h1>
             </div>
         </div>
@@ -145,13 +179,13 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-14" id="info-cards">
 
             <!-- Transport Card: Arrival -->
-            <div class="info-card rounded-2xl shadow-md overflow-hidden fade-in" id="transport-arrival-card">
-                <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl" id="arrival-icon">✈️</span>
+            <div class="info-card overflow-hidden fade-in" id="transport-arrival-card">
+                <div class="bg-gradient-to-r from-[#1e3a8a] to-[#2563eb] px-6 py-4 border-b border-white/10">
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl drop-shadow-md" id="arrival-icon">✈️</span>
                         <div>
-                            <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Arrival</p>
-                            <p class="text-white font-semibold" id="arrival-type">Flight</p>
+                            <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">Arrival</p>
+                            <p class="text-white font-bold text-lg drop-shadow-sm" id="arrival-type">Flight</p>
                         </div>
                     </div>
                 </div>
@@ -161,14 +195,14 @@
             </div>
 
             <!-- Transport Card: Departure -->
-            <div class="info-card rounded-2xl shadow-md overflow-hidden fade-in" style="animation-delay: 0.1s"
-                id="transport-departure-card">
-                <div class="bg-gradient-to-r from-amber-600 to-amber-700 px-6 py-4">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl" id="departure-icon">🚄</span>
+            <div class="info-card overflow-hidden fade-in" style="animation-delay: 0.1s" id="transport-departure-card">
+                <div class="bg-gradient-to-r from-[#9a3412] to-[#f59e0b] px-6 py-4 border-b border-white/10">
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl drop-shadow-md" id="departure-icon">🚄</span>
                         <div>
-                            <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Departure</p>
-                            <p class="text-white font-semibold" id="departure-type">Train</p>
+                            <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">Departure
+                            </p>
+                            <p class="text-white font-bold text-lg drop-shadow-sm" id="departure-type">Train</p>
                         </div>
                     </div>
                 </div>
@@ -178,14 +212,15 @@
             </div>
 
             <!-- Accommodation Card -->
-            <div class="info-card rounded-2xl shadow-md overflow-hidden fade-in lg:col-span-2"
-                style="animation-delay: 0.2s" id="accommodation-card">
-                <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 px-6 py-4">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">🏨</span>
+            <div class="info-card overflow-hidden fade-in lg:col-span-2" style="animation-delay: 0.2s"
+                id="accommodation-card">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 px-6 py-4 border-b border-white/10">
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl drop-shadow-md">🏨</span>
                         <div>
-                            <p class="text-white/80 text-xs font-medium uppercase tracking-wider">Accommodation</p>
-                            <p class="text-white font-semibold" id="hotel-name">Hotel</p>
+                            <p class="text-white/70 text-xs font-semibold uppercase tracking-widest mb-0.5">
+                                Accommodation</p>
+                            <p class="text-white font-bold text-lg drop-shadow-sm" id="hotel-name">Hotel</p>
                         </div>
                     </div>
                 </div>
@@ -202,7 +237,8 @@
                 <p class="text-slate-400">Must see attractions & activities in the city</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="must-see-container">
+            <div class="flex overflow-x-auto premium-scrollbar gap-6 pb-6 snap-x snap-mandatory px-1"
+                id="must-see-container">
                 <!-- Filled by JS -->
             </div>
         </div>

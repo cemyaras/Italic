@@ -1,5 +1,7 @@
 # Italic Travel Itinerary 🇮🇹🇧🇬
 
+**Live Link:** [https://cemyaras.github.io/Italic/](https://cemyaras.github.io/Italic/)
+
 A gorgeous, responsive, completely static web application designed to act as a sleek digital itinerary for a multi-city trip to Italy (Rome, Florence, Venice) with layovers in Sofia, Bulgaria.
 
 ## ✨ Features
