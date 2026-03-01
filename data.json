@@ -431,12 +431,12 @@
         }
       },
       "accommodation": {
-        "name": "Hotel Raphael",
-        "address": "Largo Febo, 2, 00186 Roma RM, Italy",
-        "checkIn": "May 22, 2026 – 22:00",
-        "checkOut": "May 26, 2026 – 10:00",
-        "mapsLink": "https://maps.google.com/?q=Hotel+Raphael+Roma",
-        "confirmationNo": "HR-982341",
+        "name": "Machiavelli Suites",
+        "address": "Via Machiavelli, Rome, Italy",
+        "checkIn": "May 22, 2026 – 14:00",
+        "checkOut": "May 26, 2026 – 11:00",
+        "mapsLink": "https://maps.google.com/?q=Machiavelli+Suites+Rome",
+        "confirmationNo": "",
         "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
       },
       "mustSee": [
@@ -601,12 +601,12 @@
         }
       },
       "accommodation": {
-        "name": "Hotel Lungarno",
-        "address": "Borgo San Jacopo, 14, 50125 Firenze FI, Italy",
+        "name": "B&B l'Olivo",
+        "address": "Florence, Italy",
         "checkIn": "May 26, 2026 – 14:00",
-        "checkOut": "May 29, 2026 – 09:00",
-        "mapsLink": "https://maps.google.com/?q=Hotel+Lungarno+Firenze",
-        "confirmationNo": "HL-556712",
+        "checkOut": "May 29, 2026 – 11:00",
+        "mapsLink": "https://maps.google.com/?q=B%26B+l%27Olivo+Florence",
+        "confirmationNo": "",
         "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80"
       },
       "mustSee": [
