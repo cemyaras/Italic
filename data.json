@@ -432,12 +432,12 @@
       },
       "accommodation": {
         "name": "Machiavelli Suites",
-        "address": "Via Machiavelli, Rome, Italy",
+        "address": "Via Machiavelli 13, 00185 Rome, Italy",
         "checkIn": "May 22, 2026 – 14:00",
         "checkOut": "May 26, 2026 – 11:00",
         "mapsLink": "https://maps.google.com/?q=Machiavelli+Suites+Rome",
         "confirmationNo": "",
-        "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80"
+        "image": "https://www.machiavellisuites.com/wp-content/uploads/2025/07/IMG_7816-buona-5-1024x720.jpg"
       },
       "mustSee": [
         {
@@ -602,12 +602,12 @@
       },
       "accommodation": {
         "name": "B&B l'Olivo",
-        "address": "Florence, Italy",
+        "address": "Via XXIV Maggio 5, 50129 Florence, Italy",
         "checkIn": "May 26, 2026 – 14:00",
         "checkOut": "May 29, 2026 – 11:00",
         "mapsLink": "https://maps.google.com/?q=B%26B+l%27Olivo+Florence",
         "confirmationNo": "",
-        "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80"
+        "image": "https://www.olivofirenze.it/bandb/wp-content/uploads/2020/03/florence.jpg"
       },
       "mustSee": [
         {
