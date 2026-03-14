@@ -902,3 +902,31 @@ window.addEventListener('beforeunload', () => {
     window.routeMapInstance = null;
   }
 });
+
+// ─── Utilities ──────────────────────────────────────────────────
+// Toggle Collapsible Sections
+window.toggleSection = function(headerElement) {
+  const section = headerElement.closest('.collapsible-section');
+  if (!section) return;
+  
+  const content = section.querySelector('.collapsible-content');
+  const icon = headerElement.querySelector('.toggle-icon');
+  
+  if (content.classList.contains('hidden') || content.classList.contains('invisible')) {
+    // Expand
+    content.classList.remove('hidden', 'invisible', 'h-0');
+    if (icon) icon.style.transform = 'rotate(0deg)';
+    
+    // Check if there is a map inside and resize it if needed
+    const routeMap = section.querySelector('#route-map');
+    if (routeMap && window.routeMapInstance) {
+        setTimeout(() => {
+            window.routeMapInstance.invalidateSize();
+        }, 300);
+    }
+  } else {
+    // Collapse
+    content.classList.add('hidden');
+    if (icon) icon.style.transform = 'rotate(-90deg)';
+  }
+};

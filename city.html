@@ -187,8 +187,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-14" id="info-cards">
 
             <!-- Transport Card: Arrival -->
-            <div class="info-card overflow-hidden fade-in" id="transport-arrival-card">
-                <div class="bg-gradient-to-r from-[#1e3a8a] to-[#2563eb] px-6 py-4 border-b border-white/10">
+            <div class="info-card overflow-hidden fade-in collapsible-section" id="transport-arrival-card">
+                <div class="bg-gradient-to-r from-[#1e3a8a] to-[#2563eb] px-6 py-4 border-b border-white/10 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
                     <div class="flex items-center gap-4">
                         <span class="text-3xl" id="arrival-icon">✈️</span>
                         <div>
@@ -196,15 +196,18 @@
                             <p class="text-white font-bold text-lg" id="arrival-type">Flight</p>
                         </div>
                     </div>
+                    <button class="text-white/70 group-hover:text-white transition-colors p-2 bg-black/10 rounded-full hover:bg-black/20">
+                      <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
                 </div>
-                <div class="p-6 space-y-4" id="arrival-details">
+                <div class="collapsible-content p-6 space-y-4" id="arrival-details">
                     <!-- Filled by JS -->
                 </div>
             </div>
 
             <!-- Transport Card: Departure -->
-            <div class="info-card overflow-hidden fade-in" style="animation-delay: 0.1s" id="transport-departure-card">
-                <div class="bg-gradient-to-r from-[#9a3412] to-[#f59e0b] px-6 py-4 border-b border-white/10">
+            <div class="info-card overflow-hidden fade-in collapsible-section" style="animation-delay: 0.1s" id="transport-departure-card">
+                <div class="bg-gradient-to-r from-[#9a3412] to-[#f59e0b] px-6 py-4 border-b border-white/10 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
                     <div class="flex items-center gap-4">
                         <span class="text-3xl" id="departure-icon">🚄</span>
                         <div>
@@ -213,16 +216,19 @@
                             <p class="text-white font-bold text-lg" id="departure-type">Train</p>
                         </div>
                     </div>
+                    <button class="text-white/70 group-hover:text-white transition-colors p-2 bg-black/10 rounded-full hover:bg-black/20">
+                      <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
                 </div>
-                <div class="p-6 space-y-4" id="departure-details">
+                <div class="collapsible-content p-6 space-y-4" id="departure-details">
                     <!-- Filled by JS -->
                 </div>
             </div>
 
             <!-- Accommodation Card -->
-            <div class="info-card overflow-hidden fade-in lg:col-span-2" style="animation-delay: 0.2s"
+            <div class="info-card overflow-hidden fade-in lg:col-span-2 collapsible-section" style="animation-delay: 0.2s"
                 id="accommodation-card">
-                <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 px-6 py-4 border-b border-white/10">
+                <div class="bg-gradient-to-r from-emerald-800 to-emerald-600 px-6 py-4 border-b border-white/10 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
                     <div class="flex items-center gap-4">
                         <span class="text-3xl">🏨</span>
                         <div>
@@ -231,8 +237,11 @@
                             <p class="text-white font-bold text-lg" id="hotel-name">Hotel</p>
                         </div>
                     </div>
+                    <button class="text-white/70 group-hover:text-white transition-colors p-2 bg-black/10 rounded-full hover:bg-black/20">
+                      <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
                 </div>
-                <div class="p-6" id="accommodation-details">
+                <div class="collapsible-content p-6" id="accommodation-details">
                     <!-- Filled by JS -->
                 </div>
             </div>

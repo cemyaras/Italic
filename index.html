@@ -245,124 +245,194 @@
   </section>
 
   <!-- Flights Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-4">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">✈️ Flight Information</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Your complete flight itinerary with layover details</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6" id="flights-container">
-      <!-- Rendered by app.js -->
-    </div>
-
-    <!-- Train Information -->
-    <div class="mt-8 mb-4">
-      <div class="text-center mb-6">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">🚄 Train Information</h2>
-        <p class="text-slate-400 max-w-xl mx-auto">Inter-city train connections between Italian cities</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-4 collapsible-section">
+    <div class="text-center mb-10 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">✈️ Flight Information</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left">Your complete flight itinerary with layover details</p>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6" id="trains-container">
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
+    </div>
+
+    <!-- The actual content needs to be wrapped or selected, we will wrap the grid -->
+    <div class="collapsible-content">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6" id="flights-container">
         <!-- Rendered by app.js -->
       </div>
     </div>
 
+    <!-- Train Information -->
+    <div class="mt-8 mb-4 collapsible-section">
+      <div class="text-center mb-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+        <div class="flex-1">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">🚄 Train Information</h2>
+          <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left">Inter-city train connections between Italian cities</p>
+        </div>
+        <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+          <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+      </div>
+      <div class="collapsible-content">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-6" id="trains-container">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </div>
+
     <!-- Route Map -->
-    <div class="mt-8 glass-card rounded-2xl p-4 sm:p-6 overflow-hidden" id="route-map-card">
-      <h3 class="text-lg font-bold text-white mb-4 text-center">🗺️ Route Map</h3>
-      <div id="route-map" style="height: 420px; border-radius: 12px; z-index: 1;"></div>
-      <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4">
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-0 inline-block" style="border-top: 2.5px dashed #60a5fa"></span>
-          <span class="text-xs text-slate-400">Outbound Flight (May 22)</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-0 inline-block" style="border-top: 2.5px dashed #f59e0b"></span>
-          <span class="text-xs text-slate-400">Return Flight (May 31)</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-0 inline-block" style="border-top: 2.5px solid #a78bfa"></span>
-          <span class="text-xs text-slate-400">Train Routes</span>
+    <div class="mt-8 mb-4 glass-card rounded-2xl p-4 sm:p-6 overflow-hidden collapsible-section" id="route-map-card">
+      <div class="flex items-center justify-between cursor-pointer group mb-1" onclick="toggleSection(this)">
+        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 text-center flex-1">🗺️ Route Map</h3>
+        <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+          <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+      </div>
+      <div class="collapsible-content">
+        <div id="route-map" style="height: 420px; border-radius: 12px; z-index: 1;"></div>
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4">
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-0 inline-block" style="border-top: 2.5px dashed #60a5fa"></span>
+            <span class="text-xs text-slate-400">Outbound Flight (May 22)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-0 inline-block" style="border-top: 2.5px dashed #f59e0b"></span>
+            <span class="text-xs text-slate-400">Return Flight (May 31)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-6 h-0 inline-block" style="border-top: 2.5px solid #a78bfa"></span>
+            <span class="text-xs text-slate-400">Train Routes</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Cities Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 border-t border-white/5">
-    <div class="text-center mb-12">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Cities to Visit</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Click on each city to view the detailed itinerary, accommodation &
-        transport info.</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Cities to Visit</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">Click on each city to view the detailed itinerary, accommodation & transport info.</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6" id="cities-grid">
-      <!-- City cards will be rendered here by app.js -->
+    <div class="collapsible-content">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6" id="cities-grid">
+        <!-- City cards will be rendered here by app.js -->
+      </div>
     </div>
   </section>
 
   <!-- Accommodation Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">🏨 Where We Stay</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Accommodation details for each city with dates and directions</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">🏨 Where We Stay</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">Accommodation details for each city with dates and directions</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accommodation-grid">
-      <!-- Rendered by app.js -->
+    <div class="collapsible-content">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="accommodation-grid">
+        <!-- Rendered by app.js -->
+      </div>
     </div>
   </section>
 
   <!-- Recommendations Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">💡 Travel Recommendations</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Practical tips to make the most of your trip</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">💡 Travel Recommendations</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">Practical tips to make the most of your trip</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8" id="recommendations-grid">
-      <!-- Rendered by app.js -->
+    <div class="collapsible-content">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8" id="recommendations-grid">
+        <!-- Rendered by app.js -->
+      </div>
     </div>
   </section>
 
   <!-- Activities Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">🛶 Activities & Tours</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Unforgettable experiences and guided tours</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">🛶 Activities & Tours</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">Unforgettable experiences and guided tours</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
     </div>
-    <div class="flex overflow-x-auto premium-scrollbar gap-6 pb-6 snap-x snap-mandatory px-1" id="activities-grid">
-      <!-- Rendered by app.js -->
+    <div class="collapsible-content">
+      <div class="flex overflow-x-auto premium-scrollbar gap-6 pb-6 snap-x snap-mandatory px-1" id="activities-grid">
+        <!-- Rendered by app.js -->
+      </div>
     </div>
   </section>
 
   <!-- Food Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">🍝 Culinary Delights</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Local food you must try during your adventure</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">🍝 Culinary Delights</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">Local food you must try during your adventure</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
     </div>
-    <div class="flex overflow-x-auto premium-scrollbar gap-6 pb-6 snap-x snap-mandatory px-1" id="food-grid">
-      <!-- Rendered by app.js -->
+    <div class="collapsible-content">
+      <div class="flex overflow-x-auto premium-scrollbar gap-6 pb-6 snap-x snap-mandatory px-1" id="food-grid">
+        <!-- Rendered by app.js -->
+      </div>
     </div>
   </section>
 
   <!-- Highlights Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">📍 Iconic Landmarks</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">World-famous historical sites and magnificent architecture</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">📍 Iconic Landmarks</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">World-famous historical sites and magnificent architecture</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
     </div>
-    <div class="flex overflow-x-auto premium-scrollbar gap-6 pb-6 snap-x snap-mandatory px-1" id="highlights-grid">
-      <!-- Rendered by app.js -->
+    <div class="collapsible-content">
+      <div class="flex overflow-x-auto premium-scrollbar gap-6 pb-6 snap-x snap-mandatory px-1" id="highlights-grid">
+        <!-- Rendered by app.js -->
+      </div>
     </div>
   </section>
 
   <!-- Expenses Section -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/5">
-    <div class="text-center mb-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">💰 Expenses</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Flight, Train & Accommodation Costs</p>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">💰 Expenses</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">Flight, Train & Accommodation Costs</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="expenses-container">
-      <!-- Rendered by app.js -->
+    <div class="collapsible-content">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" id="expenses-container">
+        <!-- Rendered by app.js -->
+      </div>
     </div>
   </section>
 
