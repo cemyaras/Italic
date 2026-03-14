@@ -537,6 +537,12 @@ function renderHomePage(data) {
     recGrid.innerHTML = trip.recommendations.map((r, i) => buildRecommendationCard(r, i)).join('');
   }
 
+  // Render Expenses
+  const expGrid = document.getElementById('expenses-container');
+  if (expGrid && trip.expenses) {
+    expGrid.innerHTML = buildExpensesSection(trip.expenses);
+  }
+
   // Render city cards
   const grid = document.getElementById('cities-grid');
   if (!grid) return;
@@ -568,6 +574,87 @@ function renderHomePage(data) {
       </div>
     </a>
   `).join('');
+}
+
+// ─── Expenses Builder ──────────────────────────────────────────
+function buildExpensesSection(expenses) {
+  let flightsHtml = '';
+  if (expenses.flights && expenses.flights.length > 0) {
+    flightsHtml = `
+      <div class="glass-card rounded-3xl p-6 shadow-lg h-fit" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2 mb-4"><span class="text-blue-400">✈️</span> Flight Expenses</h3>
+        <div class="space-y-4">
+          ${expenses.flights.map(flight => `
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/10 transition-colors">
+              <div>
+                <h4 class="font-bold text-white text-lg">${flight.route}</h4>
+                <p class="text-sm text-slate-400 mt-1">
+                  <span class="font-medium text-slate-300">${flight.date}</span> · ${flight.time}
+                </p>
+                <p class="text-xs text-blue-300/80 font-medium uppercase tracking-wider mt-1">${flight.airline}</p>
+              </div>
+              <div class="text-left sm:text-right">
+                <p class="text-amber-300 font-bold text-xl tabular-nums">${flight.priceTL}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  let trainsHtml = '';
+  if (expenses.trains && expenses.trains.length > 0) {
+    trainsHtml = `
+      <div class="glass-card rounded-3xl p-6 shadow-lg h-fit" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2 mb-4"><span class="text-purple-400">🚄</span> Train Expenses</h3>
+        <div class="space-y-4">
+          ${expenses.trains.map(train => `
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/10 transition-colors">
+              <div>
+                <h4 class="font-bold text-white text-lg">${train.route}</h4>
+                <p class="text-sm text-slate-400 mt-1">
+                  <span class="font-medium text-slate-300">${train.date}</span> · ${train.time}
+                </p>
+                <p class="text-xs text-purple-300/80 font-medium uppercase tracking-wider mt-1">${train.company}</p>
+              </div>
+              <div class="text-left sm:text-right">
+                <p class="text-amber-300 font-bold text-xl tabular-nums">${train.priceTL}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  let accHtml = '';
+  if (expenses.accommodations && expenses.accommodations.length > 0) {
+    accHtml = `
+      <div class="glass-card rounded-3xl p-6 shadow-lg h-fit" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2 mb-4"><span class="text-emerald-400">🏨</span> Accommodation Expenses</h3>
+        <div class="space-y-4">
+          ${expenses.accommodations.map(acc => `
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/10 transition-colors">
+              <div>
+                <h4 class="font-bold text-white text-lg">${acc.name}</h4>
+                <p class="text-sm text-rose-300 flex items-center gap-1 mt-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  Deadline: ${acc.deadline}
+                </p>
+              </div>
+              <div class="text-left sm:text-right">
+                <p class="text-amber-300 font-bold text-xl tabular-nums">${acc.priceTL}</p>
+                <p class="text-emerald-300 text-sm font-medium mt-0.5">${acc.priceEuro}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  return flightsHtml + trainsHtml + accHtml;
 }
 
 // ─── Transport Detail Builder ──────────────────────────────────

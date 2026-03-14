@@ -259,7 +259,24 @@
         "pnr": "MNOP78",
         "icon": "🚄"
       }
-    ]
+    ],
+    "expenses": {
+      "flights": [
+        { "route": "Istanbul - Sofia", "date": "May 22", "time": "11:00 - 12:20", "airline": "Pegasus", "priceTL": "5.460 TL" },
+        { "route": "Sofia - Rome", "date": "May 22", "time": "18:55 - 20:00", "airline": "Wizz Air", "priceTL": "13.840 TL" },
+        { "route": "Venice - Sofia", "date": "May 31", "time": "08:00 - 11:10", "airline": "Ryanair", "priceTL": "8.700 TL" },
+        { "route": "Sofia - Istanbul", "date": "May 31", "time": "18:45 - 20:00", "airline": "Pegasus", "priceTL": "6.496 TL" }
+      ],
+      "trains": [
+        { "route": "Rome - Florence", "date": "May 26", "time": "10:00 - 11:30", "company": "Trenitalia", "priceTL": "TBD" },
+        { "route": "Florence - Venice", "date": "May 29", "time": "09:00 - 11:05", "company": "Trenitalia", "priceTL": "TBD" }
+      ],
+      "accommodations": [
+        { "name": "Machiavelli Suites", "priceTL": "30.090 TL", "priceEuro": "595 Euro", "deadline": "May 16" },
+        { "name": "B&B l'Olivo", "priceTL": "22.302 TL", "priceEuro": "441 Euro", "deadline": "May 24" },
+        { "name": "Casa Alla Fenice", "priceTL": "24.352 TL", "priceEuro": "470 Euro", "deadline": "Apr 21" }
+      ]
+    }
   },
   "cities": [
     {
