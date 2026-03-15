@@ -414,16 +414,39 @@ function buildHighlightCard(item, delayIndex) {
 }
 
 function buildRecommendationCard(item, delayIndex) {
+  // Select icon based on city
+  let cityIcon = '📍';
+  let iconBg = 'bg-blue-500/10 border-blue-500/20 text-blue-500';
+  
+  if (item.city === 'Sofia') {
+    cityIcon = '🏛️'; // or 🇧🇬
+    iconBg = 'bg-green-500/10 border-green-500/20 text-green-500';
+  } else if (item.city === 'Rome') {
+    cityIcon = '⛲';
+    iconBg = 'bg-rose-500/10 border-rose-500/20 text-rose-500';
+  } else if (item.city === 'Florence') {
+    cityIcon = '🎨';
+    iconBg = 'bg-amber-500/10 border-amber-500/20 text-amber-500';
+  } else if (item.city === 'Venice') {
+    cityIcon = '🛶';
+    iconBg = 'bg-cyan-500/10 border-cyan-500/20 text-cyan-500';
+  }
+
   return `
-    <div class="glass-card flex gap-4 p-5 rounded-2xl shadow-lg slide-up" style="animation-delay: ${delayIndex * 0.15}s; background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
-      <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10 text-2xl shadow-inner">
-        ${item.icon}
+    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="w-full glass-card flex flex-col gap-4 p-5 rounded-3xl shadow-lg slide-up hover:bg-white/5 transition-colors border border-white/5 hover:border-white/20 group" style="animation-delay: ${delayIndex * 0.1}s; background:rgba(255,255,255,0.02);backdrop-filter:blur(10px)">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="flex-shrink-0 w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center border shadow-inner text-2xl group-hover:scale-110 transition-transform">
+          ${cityIcon}
+        </div>
+        <h3 class="text-white font-bold text-base tracking-wide uppercase opacity-90">${item.city}</h3>
       </div>
-      <div class="flex flex-col justify-center">
-        <h3 class="text-white font-bold text-lg mb-1 tracking-wide">${item.title}</h3>
-        <p class="text-sm text-slate-400 leading-relaxed font-light">${item.description}</p>
+      <div class="flex-1">
+        <p class="text-[15px] text-slate-300 leading-relaxed font-medium italic">"${item.text}"</p>
       </div>
-    </div>
+      <div class="mt-2 text-xs font-semibold tracking-widest uppercase text-slate-500 group-hover:text-[#81c14b] transition-colors flex items-center justify-end">
+        Read Entry ↗
+      </div>
+    </a>
   `;
 }
 
@@ -533,8 +556,27 @@ function renderHomePage(data) {
 
   // Render Recommendations
   const recGrid = document.getElementById('recommendations-grid');
-  if (recGrid && trip.recommendations) {
-    recGrid.innerHTML = trip.recommendations.map((r, i) => buildRecommendationCard(r, i)).join('');
+  if (recGrid && trip.eksiRecommendations) {
+    // Group by city
+    const grouped = {};
+    const cityOrder = [];
+    trip.eksiRecommendations.forEach(r => {
+      if (!grouped[r.city]) {
+        grouped[r.city] = [];
+        cityOrder.push(r.city);
+      }
+      grouped[r.city].push(r);
+    });
+
+    const columnsHtml = cityOrder.map((city, colIndex) => {
+      return `
+        <div class="flex flex-col gap-5">
+          ${grouped[city].map((r, i) => buildRecommendationCard(r, (colIndex * 5) + i)).join('')}
+        </div>
+      `;
+    }).join('');
+
+    recGrid.innerHTML = columnsHtml;
   }
 
   // Render Expenses

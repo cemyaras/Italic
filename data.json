@@ -114,37 +114,27 @@
         "image": "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80"
       }
     ],
-    "recommendations": [
-      {
-        "title": "Comfortable Walking Shoes",
-        "description": "Italian city centers have many cobblestone streets. Pack your most comfortable sneakers or walking shoes.",
-        "icon": "👟"
-      },
-      {
-        "title": "Pre-book Major Attractions",
-        "description": "Skip the long lines by booking tickets for the Colosseum, Vatican, and Uffizi Gallery well in advance.",
-        "icon": "🎫"
-      },
-      {
-        "title": "Validate Train Tickets",
-        "description": "Always remember to validate your regional train tickets at the machine on the platform before boarding.",
-        "icon": "🚄"
-      },
-      {
-        "title": "Cash for Small Purchases",
-        "description": "While cards are widely accepted, it's good to have some Euros for small cafes, gelato, or tipping.",
-        "icon": "💶"
-      },
-      {
-        "title": "Learn Italian Greetings",
-        "description": "A simple 'Buongiorno' (Good morning) or 'Grazie' (Thank you) goes a long way.",
-        "icon": "🗣️"
-      },
-      {
-        "title": "Watch Your Belongings",
-        "description": "Stay alert for pickpockets in crowded tourist areas or on busy public transit.",
-        "icon": "🎒"
-      }
+    "eksiRecommendations": [
+      { "city": "Sofia", "text": "Tren istasyonu, Esenler Otağı'na göre bile daha kötü olan, kokusuyla meşhur (!) bir şehir girişi.", "url": "https://eksisozluk.com/entry/35100404" },
+      { "city": "Sofia", "text": "Kama Sutra isimli kulüpte unutulmaz anılar bırakan, kendine has gece hayatı olan bir yer.", "url": "https://eksisozluk.com/entry/42855776" },
+      { "city": "Sofia", "text": "Parkları yeşil, binaları tarihi, ulaşımı kolay ve sakin; sanıldığından çok daha sevimli bir Avrupa şehri.", "url": "https://eksisozluk.com/entry/161278744" },
+      { "city": "Sofia", "text": "Soğuk ama cana yakın insanları, uygun fiyatlı yemekleri ve yürüyerek keşfedilecek minik merkeziyle ideal.", "url": "https://eksisozluk.com/entry/16654907" },
+      { "city": "Sofia", "text": "Tüketici fiyatlarının Türkiye ile yarıştığı ama yerel halkın mütevazı yaşadığı, ilginç bir Balkan başkenti.", "url": "https://eksisozluk.com/entry/43515634" },
+      { "city": "Rome", "text": "Roma'yı otobüsle değil yürüyerek gezmeli, sokak aralarını keşfetmeli ve ayın ilk pazarı ücretsiz müzelere uğramalı.", "url": "https://eksisozluk.com/entry/50796594" },
+      { "city": "Rome", "text": "En az bir-iki hafta önceden bilet almanız gereken Galleria Borghese ve Vatikan gibi sanat dolu duraklar dört güne sığmıyor.", "url": "https://eksisozluk.com/entry/146301709" },
+      { "city": "Rome", "text": "Yürümeye hazır olun, Vatikan ve Colosseum için rezervasyon yapın ve sürekli yerel pizzacıları keşfedin.", "url": "https://eksisozluk.com/entry/30781138" },
+      { "city": "Rome", "text": "Vespa kiralayarak şehri 3 günde her köşesiyle keşfedebileceğiniz, insanın hayatını değiştiren büyüleyici bir şehir.", "url": "https://eksisozluk.com/entry/34856500" },
+      { "city": "Rome", "text": "Kışın bile canlı, her yanı sanat fışkıran ve bir kez gidince tekrar gitmek için gün saydıran aşk şehri.", "url": "https://eksisozluk.com/entry/161080982" },
+      { "city": "Florence", "text": "Güzelliğiyle insanı büyüleyen, şanslı insanların doğup büyüdüğü eşsiz bir sanat şehri.", "url": "https://eksisozluk.com/entry/48316685" },
+      { "city": "Florence", "text": "Tanpınar'ın gözüyle: 'Gümüş bir kazana benzeyen, mazi ile halin iç içe geçtiği, bir gül kadar munis bir şehir.'", "url": "https://eksisozluk.com/entry/145171093" },
+      { "city": "Florence", "text": "Steak'i meşhur, dondurması şahane ve Michelangelo tepesinde gün batımının tadına doyulmayan bir yer.", "url": "https://eksisozluk.com/entry/167096929" },
+      { "city": "Florence", "text": "Katedrali karşısında nefesinizin kesileceği, her sokağında sanat fışkıran ve insanın ruhuna değer veren bir durak.", "url": "https://eksisozluk.com/entry/55184724" },
+      { "city": "Florence", "text": "Farklı kültürlerin ve dillerin birbirine geçtiği, komik anılar biriktirebileceğiniz bir gastronomi ve kültür harmanı.", "url": "https://eksisozluk.com/entry/8112100" },
+      { "city": "Venice", "text": "Her sokağıyla büyüleyen, kaybolmanın bile zevkli olduğu, kanallar üzerinde yükselen gerçek dışı bir balık şehri.", "url": "https://eksisozluk.com/entry/33082321" },
+      { "city": "Venice", "text": "Hüzünlü, tekinsiz ama bir o kadar estetik; dünyanın en görülesi açık hava müzelerinden biri.", "url": "https://eksisozluk.com/entry/1127837" },
+      { "city": "Venice", "text": "Tipik bir romantizm hayali olsa da, gerçekliğiyle her bütçeye ve hayale hitap edebilecek ikonik bir şehir.", "url": "https://eksisozluk.com/entry/26360412" },
+      { "city": "Venice", "text": "Gondol turu, maskeleri ve Burano'nun renkli evleriyle balayı tadında, kokusu söylendiği gibi kötü olmayan bir rüya.", "url": "https://eksisozluk.com/entry/40436669" },
+      { "city": "Venice", "text": "Suluboya tablo gibi, insan eliyle yapılmış en güzel şehir; sular yükseldiğinde bile bambaşka bir keyif veren durak.", "url": "https://eksisozluk.com/entry/19490681" }
     ],
     "flights": {
       "outbound": {
