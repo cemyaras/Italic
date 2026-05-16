@@ -336,8 +336,8 @@ function renderRouteMap() {
   const markerInfo = {
     istanbul: '✈️ PC271 → Sofia (May 22, 11:00)<br>✈️ PC272 ← Sofia (May 31, 20:00)',
     sofia: '🔄 Layover hub<br>Outbound: 12:20 – 18:55<br>Return: 10:45 – 18:45',
-    rome: '✈️ Wizz Air ← Sofia (May 22, 20:00)<br>🚄 Train → Florence (May 26)',
-    florence: '🚄 Roma → Firenze (May 26)<br>🚄 Firenze → Venezia (May 29)',
+    rome: '✈️ Wizz Air ← Sofia (May 22, 20:00)<br>🚌 Bus → Florence (May 26)',
+    florence: '🚌 Roma → Firenze (May 26)<br>🚄 Firenze → Venezia (May 29)',
     venice: '✈️ Ryanair FR6428 → Sofia (May 31, 08:00)',
   };
 
@@ -662,6 +662,32 @@ function buildExpensesSection(expenses) {
               </div>
               <div class="text-left sm:text-right">
                 <p class="text-amber-300 font-bold text-xl tabular-nums">${train.priceTL}</p>
+                ${train.priceEuro ? `<p class="text-emerald-300 text-sm font-medium mt-0.5">${train.priceEuro}</p>` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  let busesHtml = '';
+  if (expenses.buses && expenses.buses.length > 0) {
+    busesHtml = `
+      <div class="glass-card rounded-3xl p-6 shadow-lg h-fit" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(10px)">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2 mb-4"><span class="text-cyan-400">🚌</span> Bus Expenses</h3>
+        <div class="space-y-4">
+          ${expenses.buses.map(bus => `
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/10 transition-colors">
+              <div>
+                <h4 class="font-bold text-white text-lg">${bus.route}</h4>
+                <p class="text-sm text-slate-400 mt-1">
+                  <span class="font-medium text-slate-300">${bus.date}</span> · ${bus.time}
+                </p>
+                <p class="text-xs text-cyan-300/80 font-medium uppercase tracking-wider mt-1">${bus.company}</p>
+              </div>
+              <div class="text-left sm:text-right">
+                <p class="text-amber-300 font-bold text-xl tabular-nums">${bus.priceTL}</p>
               </div>
             </div>
           `).join('')}
@@ -696,7 +722,7 @@ function buildExpensesSection(expenses) {
     `;
   }
 
-  return flightsHtml + trainsHtml + accHtml;
+  return flightsHtml + trainsHtml + busesHtml + accHtml;
 }
 
 // ─── Transport Detail Builder ──────────────────────────────────

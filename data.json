@@ -227,26 +227,26 @@
     "trains": [
       {
         "label": "Rome → Florence – May 26",
-        "from": "Roma Termini",
-        "to": "Firenze S.M.N.",
-        "departure": "10:00",
-        "arrival": "11:30",
+        "from": "Roma",
+        "to": "Firenze",
+        "departure": "08:30",
+        "arrival": "11:45",
         "date": "May 26, 2026",
-        "company": "Trenitalia",
-        "trainNo": "FR 9414",
-        "pnr": "XYZT45",
-        "icon": "🚄"
+        "company": "Bus",
+        "trainNo": "",
+        "pnr": "",
+        "icon": "🚌"
       },
       {
         "label": "Florence → Venice – May 29",
-        "from": "Firenze S.M.N.",
-        "to": "Venezia Santa Lucia",
-        "departure": "09:00",
-        "arrival": "11:05",
+        "from": "Firenze S.M.",
+        "to": "Venezia S.L.",
+        "departure": "08:39",
+        "arrival": "10:55",
         "date": "May 29, 2026",
-        "company": "Trenitalia",
-        "trainNo": "FR 8516",
-        "pnr": "MNOP78",
+        "company": "Italo",
+        "trainNo": "8924",
+        "pnr": "MY5IPY",
         "icon": "🚄"
       }
     ],
@@ -258,8 +258,10 @@
         { "route": "Sofia - Istanbul", "date": "May 31", "time": "18:45 - 20:00", "airline": "Pegasus", "priceTL": "6.496 TL" }
       ],
       "trains": [
-        { "route": "Rome - Florence", "date": "May 26", "time": "10:00 - 11:30", "company": "Trenitalia", "priceTL": "TBD" },
-        { "route": "Florence - Venice", "date": "May 29", "time": "09:00 - 11:05", "company": "Trenitalia", "priceTL": "TBD" }
+        { "route": "Florence - Venice", "date": "May 29", "time": "08:39 - 10:55", "company": "Italo", "priceTL": "3.500 TL", "priceEuro": "65.80 Euro" }
+      ],
+      "buses": [
+        { "route": "Rome - Florence", "date": "May 26", "time": "08:30 - 11:45", "company": "Flixbus", "priceTL": "850 TL" }
       ],
       "accommodations": [
         { "name": "Machiavelli Suites", "priceTL": "30.090 TL", "priceEuro": "595 Euro", "deadline": "May 16" },
@@ -427,14 +429,14 @@
           "pnr": "1RN11M"
         },
         "departure": {
-          "type": "Train",
-          "icon": "🚄",
-          "from": "Roma Termini",
-          "to": "Firenze S.M.N.",
+          "type": "Bus",
+          "icon": "🚌",
+          "from": "Roma",
+          "to": "Firenze",
           "date": "May 26, 2026",
-          "time": "10:00 – 11:30",
-          "trainNo": "FR 9414",
-          "pnr": "XYZT45"
+          "time": "08:30 – 11:45",
+          "trainNo": "Bus",
+          "pnr": ""
         }
       },
       "accommodation": {
@@ -587,24 +589,24 @@
       "shortDescription": "The cradle of the Renaissance awaits with stunning art, architecture, and unforgettable Tuscan flavors.",
       "transport": {
         "arrival": {
-          "type": "Train",
-          "icon": "🚄",
-          "from": "Roma Termini",
-          "to": "Firenze S.M.N.",
+          "type": "Bus",
+          "icon": "🚌",
+          "from": "Roma",
+          "to": "Firenze",
           "date": "May 26, 2026",
-          "time": "10:00 – 11:30",
-          "trainNo": "FR 9414",
-          "pnr": "XYZT45"
+          "time": "08:30 – 11:45",
+          "trainNo": "Bus",
+          "pnr": ""
         },
         "departure": {
           "type": "Train",
           "icon": "🚄",
-          "from": "Firenze S.M.N.",
-          "to": "Venezia Santa Lucia",
+          "from": "Firenze S.M.",
+          "to": "Venezia S.L.",
           "date": "May 29, 2026",
-          "time": "09:00 – 11:05",
-          "trainNo": "FR 8516",
-          "pnr": "MNOP78"
+          "time": "08:39 – 10:55",
+          "trainNo": "8924",
+          "pnr": "MY5IPY"
         }
       },
       "accommodation": {
@@ -644,8 +646,8 @@
           "title": "Arrival & First Impressions",
           "activities": [
             {
-              "time": "11:30",
-              "activity": "Arrive at Firenze S.M.N. station"
+              "time": "11:45",
+              "activity": "Arrive in Firenze 🚌"
             },
             {
               "time": "12:00",
@@ -759,12 +761,12 @@
         "arrival": {
           "type": "Train",
           "icon": "🚄",
-          "from": "Firenze S.M.N.",
-          "to": "Venezia Santa Lucia",
+          "from": "Firenze S.M.",
+          "to": "Venezia S.L.",
           "date": "May 29, 2026",
-          "time": "09:00 – 11:05",
-          "trainNo": "FR 8516",
-          "pnr": "MNOP78"
+          "time": "08:39 – 10:55",
+          "trainNo": "8924",
+          "pnr": "MY5IPY"
         },
         "departure": {
           "type": "Flight",
@@ -814,8 +816,8 @@
           "title": "Welcome to Venice",
           "activities": [
             {
-              "time": "11:05",
-              "activity": "Arrive at Venezia Santa Lucia station"
+              "time": "10:55",
+              "activity": "Arrive at Venezia S.L. station"
             },
             {
               "time": "11:30",
