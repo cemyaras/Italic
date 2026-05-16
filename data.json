@@ -227,20 +227,20 @@
     "trains": [
       {
         "label": "Rome → Florence – May 26",
-        "from": "Roma",
-        "to": "Firenze",
+        "from": "<a href=\"https://maps.app.goo.gl/74gKFfLMMwxNsygK8\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Roma Tiburtina</a>",
+        "to": "<a href=\"https://maps.app.goo.gl/tEvVHXnrdur5BjYD9\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Villa Costanza (Florence)</a>",
         "departure": "08:30",
         "arrival": "11:45",
         "date": "May 26, 2026",
-        "company": "Bus",
+        "company": "Flixbus",
         "trainNo": "",
         "pnr": "",
         "icon": "🚌"
       },
       {
         "label": "Florence → Venice – May 29",
-        "from": "Firenze S.M.",
-        "to": "Venezia S.L.",
+        "from": "<a href=\"https://www.google.com/maps/search/?api=1&query=Firenze+Santa+Maria+Novella+Station\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Firenze S.M.Novella</a>",
+        "to": "<a href=\"https://www.google.com/maps/search/?api=1&query=Venezia+Santa+Lucia+Station\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Venezia S.Lucia</a>",
         "departure": "08:39",
         "arrival": "10:55",
         "date": "May 29, 2026",
@@ -431,11 +431,11 @@
         "departure": {
           "type": "Bus",
           "icon": "🚌",
-          "from": "Roma",
-          "to": "Firenze",
+          "from": "<a href=\"https://maps.app.goo.gl/74gKFfLMMwxNsygK8\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Roma Tiburtina</a>",
+          "to": "<a href=\"https://maps.app.goo.gl/tEvVHXnrdur5BjYD9\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Villa Costanza (Florence)</a>",
           "date": "May 26, 2026",
           "time": "08:30 – 11:45",
-          "trainNo": "Bus",
+          "trainNo": "Flixbus",
           "pnr": ""
         }
       },
@@ -591,18 +591,18 @@
         "arrival": {
           "type": "Bus",
           "icon": "🚌",
-          "from": "Roma",
-          "to": "Firenze",
+          "from": "<a href=\"https://maps.app.goo.gl/74gKFfLMMwxNsygK8\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Roma Tiburtina</a>",
+          "to": "<a href=\"https://maps.app.goo.gl/tEvVHXnrdur5BjYD9\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Villa Costanza (Florence)</a>",
           "date": "May 26, 2026",
           "time": "08:30 – 11:45",
-          "trainNo": "Bus",
+          "trainNo": "Flixbus",
           "pnr": ""
         },
         "departure": {
           "type": "Train",
           "icon": "🚄",
-          "from": "Firenze S.M.",
-          "to": "Venezia S.L.",
+          "from": "<a href=\"https://www.google.com/maps/search/?api=1&query=Firenze+Santa+Maria+Novella+Station\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Firenze S.M.Novella</a>",
+          "to": "<a href=\"https://www.google.com/maps/search/?api=1&query=Venezia+Santa+Lucia+Station\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Venezia S.Lucia</a>",
           "date": "May 29, 2026",
           "time": "08:39 – 10:55",
           "trainNo": "8924",
@@ -647,7 +647,7 @@
           "activities": [
             {
               "time": "11:45",
-              "activity": "Arrive in Firenze 🚌"
+              "activity": "Arrive at Villa Costanza (Florence) 🚌"
             },
             {
               "time": "12:00",
@@ -761,8 +761,8 @@
         "arrival": {
           "type": "Train",
           "icon": "🚄",
-          "from": "Firenze S.M.",
-          "to": "Venezia S.L.",
+          "from": "<a href=\"https://www.google.com/maps/search/?api=1&query=Firenze+Santa+Maria+Novella+Station\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Firenze S.M.Novella</a>",
+          "to": "<a href=\"https://www.google.com/maps/search/?api=1&query=Venezia+Santa+Lucia+Station\" target=\"_blank\" class=\"underline hover:text-cyan-300 transition-colors\">Venezia S.Lucia</a>",
           "date": "May 29, 2026",
           "time": "08:39 – 10:55",
           "trainNo": "8924",
@@ -817,7 +817,7 @@
           "activities": [
             {
               "time": "10:55",
-              "activity": "Arrive at Venezia S.L. station"
+              "activity": "Arrive at Venezia S.Lucia station"
             },
             {
               "time": "11:30",

@@ -313,10 +313,10 @@ function renderRouteMap() {
     color: '#f59e0b', weight: 3, dashArray: '10, 6', opacity: 0.85,
   }).addTo(map);
 
-  // ── Train routes (solid purple) ──
+  // ── Bus route (solid cyan) ──
   L.polyline(
     [[cities.rome.lat, cities.rome.lng], [cities.florence.lat, cities.florence.lng]],
-    { color: '#a78bfa', weight: 3, opacity: 0.9 }
+    { color: '#22d3ee', weight: 3, opacity: 0.9 }
   ).addTo(map);
 
   L.polyline(
