@@ -313,6 +313,80 @@
     </div>
   </section>
 
+  <!-- Important Transport Information Section -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
+    <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
+      <div class="flex-1">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">ℹ️ Important Transport Information</h2>
+        <p class="text-slate-400 max-w-xl mx-auto sm:text-center text-left text-sm sm:text-base">City transfers, local transport and transit tips</p>
+      </div>
+      <button class="text-slate-400 group-hover:text-white transition-colors p-2 bg-white/5 rounded-full hover:bg-white/10">
+        <svg class="w-6 h-6 transition-transform duration-300 toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </button>
+    </div>
+    <div class="collapsible-content">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        
+        <!-- FCO to Rome Center -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+          <h4 class="font-bold text-white text-lg flex items-center gap-2 mb-2">
+            <span>✈️</span> Fiumicino Airport → Rome Center
+          </h4>
+          <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+            There are shuttle buses every 30 minutes from Rome Fiumicino to the city center. Tickets can be bought online and cost approximately <strong>9 Euros</strong> per person.
+          </p>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=Rome+Fiumicino+Airport&destination=Via+Machiavelli+13,+Rome&travelmode=transit" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 bg-cyan-400/10 hover:bg-cyan-400/20 px-3 py-1.5 rounded-lg transition-colors">
+            📍 View on Google Maps
+          </a>
+        </div>
+
+        <!-- Rome Hotel to Tiburtina -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+          <h4 class="font-bold text-white text-lg flex items-center gap-2 mb-2">
+            <span>🚇</span> Rome Hotel → Tiburtina Bus Terminal
+          </h4>
+          <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+            To catch the bus to Florence, you can easily reach Roma Tiburtina Bus Terminal from your hotel using <strong>two Metro lines</strong>.
+          </p>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=Via+Machiavelli+13,+Rome&destination=Roma+Tiburtina&travelmode=transit" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 bg-cyan-400/10 hover:bg-cyan-400/20 px-3 py-1.5 rounded-lg transition-colors">
+            📍 View on Google Maps
+          </a>
+        </div>
+
+        <!-- Villa Costanza to Florence Hotel -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+          <h4 class="font-bold text-white text-lg flex items-center gap-2 mb-2">
+            <span>🚌</span> Villa Costanza → Florence Hotel
+          </h4>
+          <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+            After arriving at Villa Costanza by Flixbus, you can reach your Florence hotel smoothly via <strong>tram, metro, or local train</strong>.
+          </p>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=Villa+Costanza,+Florence&destination=Via+XXIV+Maggio+5,+Florence&travelmode=transit" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 bg-cyan-400/10 hover:bg-cyan-400/20 px-3 py-1.5 rounded-lg transition-colors">
+            📍 View on Google Maps
+          </a>
+        </div>
+
+        <!-- Florence Hotel to Firenze S.M.N. -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-colors relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl"></div>
+          <h4 class="font-bold text-white text-lg flex items-center gap-2 mb-2">
+            <span>🚆</span> Florence Hotel → Train Station
+          </h4>
+          <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+            To catch your train to Venice, the Firenze S.M.Novella train station is easily accessible from your hotel via <strong>metro, train, or tram</strong>.
+          </p>
+          <a href="https://www.google.com/maps/dir/?api=1&origin=Via+XXIV+Maggio+5,+Florence&destination=Firenze+Santa+Maria+Novella+Station&travelmode=transit" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 bg-cyan-400/10 hover:bg-cyan-400/20 px-3 py-1.5 rounded-lg transition-colors">
+            📍 View on Google Maps
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Cities Section -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4 border-t border-white/5 collapsible-section">
     <div class="text-center mb-6 pt-6 flex items-center justify-between cursor-pointer group" onclick="toggleSection(this)">
